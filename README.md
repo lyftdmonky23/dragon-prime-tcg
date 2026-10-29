@@ -1,96 +1,42 @@
 # 🐉 Dragon Prime: Fusion TCG
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-amber.svg)](LICENSE)
-[![Blockchain: WAX](https://img.shields.io/badge/Blockchain-WAX-orange.svg)](https://wax.io)
-[![Hosting: GitHub Pages](https://img.shields.io/badge/Hosting-GitHub%20Pages-blue.svg)](https://pages.github.com)
-
-> **"Gather Essence. Fuse Eggs. Claim Prime Glory."**
-
-Welcome to the official repository and handbook for **Dragon Prime: Fusion TCG**, a Web3 Trading Card Game built entirely on the **WAX Blockchain** leveraging **AtomicHub** and **NeftyBlocks** without a custom database or game server.
+Welcome to the official GitHub repository and economic documentation for **Dragon Prime**, a sustainable card evolution and crafting TCG hosted on the **WAX blockchain**.
 
 ---
 
-## 📜 Table of Contents
-- [Realm Lore & Origins](#-realm-lore--origins)
-- [Game Loop & Mechanics](#-game-loop--mechanics)
-- [Economic Valuation Matrix](#-economic-valuation-matrix)
-- [Collection Assets & Templates](#-collection-assets--templates)
-- [Getting Started & Setup Guide](#-getting-started--setup-guide)
-- [Deployment via GitHub Pages](#-deployment-via-github-pages)
-- [License](#-license)
+## 🌟 Core Economic Philosophy
+Dragon Prime is designed to solve the classic web3 TCG dilemma: keeping packs hyper-accessible for new players while ensuring long-term collectibility, deflationary supply burns, and creator profitability.
+
+- **Collection Name:** `dragonprime1`
+- **Schema:** `dragonsandeggs`
+- **Base Entry Price:** **2.00 WAX** per Mysterious Dragon Essence pack.
+- **Pricing Formula:** Raw input cost multiplied by a strict **1.5x progression multiplier** across every crafting tier.
 
 ---
 
-## 🌌 Realm Lore & Origins
+## 📈 Progression & 1.5x Valuation Ladder
 
-In the primordial era of the WAX realm, raw elemental energy condensed into crystalline shards known as **Mysterious Dragon Essence**. Alchemists discovered that when this essence is subjected to extreme heat in the fusion crucible, it crystallizes into metallic containment shells—the legendary **Dragon Eggs**.
-
-Forged through meticulous tier-based blending, these eggs hatch into formidable dragon wyrms. Each progressive tier—from the steadfast Bronze to the mythic Platinum apex—requires smart resource management and strategic trading from tamers across the blockchain.
-
----
-
-## 🔄 Game Loop & Mechanics
-
-1. **Acquire Essence:** Purchase *Mysterious Dragon Essence* directly via AtomicHub Drops for **0.05 WAX**.
-2. **RNG Unboxing:** Burn **3x Mysterious Dragon Essence** in NeftyBlocks to roll for random metallic eggs.
-3. **Tier Fusions:** Combine **3x matching Metallic Eggs** or creatures in NeftyBlocks blends to upgrade your portfolio and summon powerful dragon combatants.
-4. **Secondary Trading:** Trade duplicates and rare pulls on the AtomicHub Marketplace, earning creator royalties on every transaction.
-
----
-
-## 📊 Economic Valuation Matrix
-
-Priced for maximum liquidity, high trading volume, and player accessibility:
-
-| Asset Name | Classification | Scaling Rule | Target Value (WAX) |
-| :--- | :--- | :--- | :--- |
-| **🧪 Mysterious Dragon Essence** | Essence | Base Unit (Primary Drop) | **0.05 WAX** |
-| **🥉 Bronze Dragon Egg** | Egg (Common) | 3x Essence + RNG Markup | **0.20 WAX** |
-| **🥈 Silver Dragon Egg** | Egg (Uncommon) | 3x Bronze Eggs + Markup | **0.75 WAX** |
-| **🥇 Gold Dragon Egg** | Egg (Rare) | 3x Silver Eggs + Markup | **3.00 WAX** |
-| **⚪ Platinum Dragon Egg** | Egg (Legendary) | 3x Gold Eggs + Scarcity (Cap: 100) | **12.00 WAX** |
-| **🐉 Bronze Dragon** | Creature | Slightly > 3x Bronze Eggs | **0.70 WAX** |
-| **🐉 Silver Dragon** | Creature | Slightly > 3x Silver Eggs | **2.50 WAX** |
-| **🐉 Gold Dragon** | Creature | Slightly > 3x Gold Eggs | **10.00 WAX** |
-| **👑 Platinum Dragon** | Apex Creature | Slightly > 3x Platinum Eggs | **40.00 WAX** |
-
----
-
-## 🃏 Collection Assets & Templates
-
-Managed inside the `dragonprime1` collection under the `dragonsandeggs` schema:
-
-| Asset Name | Category | Rarity | Supply Cap | Burnable |
+| Tier / Asset Name | Crafting / Evolution Requirement | Raw Input Cost | Target Market Value (1.5x) | Supply Cap |
 | :--- | :--- | :--- | :--- | :--- |
-| **Mysterious Dragon Essence** | Essence | Common | Infinite | Yes |
-| **Bronze Dragon Egg** | Egg | Common | Infinite | Yes |
-| **Silver Dragon Egg** | Egg | Uncommon | Infinite | Yes |
-| **Gold Dragon Egg** | Egg | Rare | Infinite | Yes |
-| **Platinum Dragon Egg** | Egg | Legendary | **Capped (100)** | Yes |
-| **Bronze Dragon** | Creature | Common | Dynamic | Yes |
-| **Silver Dragon** | Creature | Uncommon | Dynamic | Yes |
-| **Gold Dragon** | Creature | Rare | Dynamic | Yes |
-| **Platinum Dragon** | Creature | Legendary | Dynamic | Yes |
+| **🧪 Mysterious Dragon Essence** | Primary Drop Entry | — | **2.00 WAX** | Infinite |
+| **🥚 Dragon Egg** | Burn **4x Essence** | 4 × 2.00 WAX = 8.00 WAX | **12.00 WAX** | Infinite |
+| **🐉 Bronze Dragon Whelp** | Burn **3x Dragon Eggs** | 3 × 12.00 WAX = 36.00 WAX | **54.00 WAX** | Infinite |
+| **🥈 Silver Dragon Whelp** | Burn **3x Bronze Whelps** | 3 × 54.00 WAX = 162.00 WAX | **243.00 WAX** | Infinite |
+| **🥇 Gold Dragon Whelp** | Burn **3x Silver Whelps** | 3 × 243.00 WAX = 729.00 WAX | **1,093.50 WAX** | Infinite |
+| **👑 Platinum Dragon Whelp** | Burn **3x Gold Whelps** | 3 × 1,093.50 WAX = 3,280.50 WAX | **4,920.75 WAX** | **500 Max** |
 
 ---
 
-## 🛠️ Getting Started & Setup Guide
+## ⚙️ NeftyBlocks Blend Recipes
 
-1. **AtomicHub Creator Setup:** Create your collection (`dragonprime1`), schema (`dragonsandeggs`), and asset templates.
-2. **Primary Drops:** Set up a drop for *Mysterious Dragon Essence* at **0.05 WAX**.
-3. **NeftyBlocks Blends:** Configure your unboxing RNG blend and tier upgrade blends.
-4. **Deploy Handbook:** Push your `index.html` (this repository) to GitHub Pages so players can read the lore and pricing matrix.
-
----
-
-## 🌐 Deployment via GitHub Pages
-
-1. Go to your GitHub repository **Settings** $\rightarrow$ **Pages**.
-2. Set **Branch** to `main` and folder to `/ (root)`.
-3. Click **Save** to publish your lore guide live.
+1. **Hatchery Blend:** Burn `4x Mysterious Dragon Essence` ➔ Receive `1x Dragon Egg`
+2. **Awakening Blend:** Burn `3x Dragon Eggs` ➔ Receive `1x Bronze Dragon Whelp`
+3. **Silver Tier Evolution:** Burn `3x Bronze Dragon Whelps` ➔ Receive `1x Silver Dragon Whelp`
+4. **Gold Tier Evolution:** Burn `3x Silver Dragon Whelps` ➔ Receive `1x Gold Dragon Whelp`
+5. **Platinum Apex Evolution:** Burn `3x Gold Dragon Whelps` ➔ Receive `1x Platinum Dragon Whelp` *(Strictly capped at 500 max mints)*
 
 ---
 
-## 📜 License
-
-Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information.
+## 🛠️ Repository Setup
+- `index.html`: The live web-hosted handbook and lore guide.
+- `README.md`: Developer and creator economic reference guide.
