@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dragon Prime: Fusion TCG — Web Simulator & dApp</title>
+    <title>Dragon Prime: Fusion TCG — Lore & Economic Guide</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -15,11 +15,7 @@
                         wax: {
                             gold: '#f5a623',
                             dark: '#0f172a',
-                            card: '#1e293b',
-                            accent: '#3b82f6',
-                            bronze: '#cd7f32',
-                            silver: '#c0c0c0',
-                            platinum: '#e5e4e2'
+                            card: '#1e293b'
                         }
                     }
                 }
@@ -28,10 +24,7 @@
     </script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Official WAX Cloud Wallet JS Library -->
-    <script src="https://unpkg.com/@waxio/waxjs@1.3.0/dist/waxjs.js"></script>
     <style>
-        .glow-gold { filter: drop-shadow(0 0 10px rgba(245, 166, 35, 0.4)); }
         .card-gradient { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
     </style>
 </head>
@@ -43,484 +36,162 @@
             <div class="flex items-center space-x-3">
                 <span class="text-2xl">🐉</span>
                 <span class="font-extrabold text-lg sm:text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-amber-200">
-                    DRAGON PRIME: FUSION
+                    DRAGON PRIME: LORE & ECONOMY
                 </span>
             </div>
-            
-            <div class="flex items-center space-x-3">
-                <span id="network-badge" class="hidden sm:inline-flex text-xs bg-amber-500/10 text-amber-400 px-3 py-1 rounded-full border border-amber-500/20 font-semibold">
-                    Local Simulator
-                </span>
-                <button id="wax-login-btn" onclick="openWalletModal()" class="py-2 px-4 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl shadow-lg shadow-amber-500/10 transition flex items-center gap-2">
-                    <i class="fa-solid fa-wallet"></i> <span id="wallet-btn-text">Connect Wallet</span>
-                </button>
+            <div>
+                <a href="https://wax.atomichub.io" target="_blank" class="py-2 px-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl shadow-lg shadow-amber-500/10 transition inline-flex items-center gap-2">
+                    <i class="fa-solid fa-store"></i> Visit AtomicHub
+                </a>
             </div>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
-        <!-- Banner / Hero Section -->
-        <section class="rounded-2xl bg-gradient-to-r from-amber-950/40 via-slate-900 to-slate-900 border border-amber-500/20 p-6 md:p-8 relative overflow-hidden">
-            <div class="relative z-10 max-w-3xl space-y-3">
-                <h1 class="text-2xl sm:text-4xl font-extrabold text-amber-400">Gather Essence. Fuse Eggs. Claim Prime Glory.</h1>
-                <p class="text-slate-300 text-xs sm:text-base leading-relaxed">
-                    Purchase <strong>Mysterious Dragon Essence</strong> with WAX tokens, hatch metallic eggs, and fuse matching tiers to awaken dragon combatants!
+        <!-- Hero Section -->
+        <section class="text-center space-y-4 py-6">
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-yellow-200">
+                The Lore & Value Matrix of Dragon Prime
+            </h1>
+            <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+                Welcome to the official handbook for <strong>Dragon Prime: Fusion TCG</strong> on the WAX blockchain. Discover the ancient history of draconic alchemy and examine our strict economic tier scaling.
+            </p>
+        </section>
+
+        <!-- Lore Section -->
+        <section class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 card-gradient">
+            <div class="flex items-center space-x-3 border-b border-slate-800 pb-4">
+                <span class="text-3xl">📜</span>
+                <div>
+                    <h2 class="text-xl font-bold text-amber-400">Realm Lore & Origins</h2>
+                    <p class="text-xs text-slate-400">The history of the primordial forge.</p>
+                </div>
+            </div>
+            <div class="text-slate-300 text-sm sm:text-base space-y-4 leading-relaxed">
+                <p>
+                    In the primordial era of the WAX realm, raw elemental energy condensed into crystalline shards known as <strong>Mysterious Dragon Essence</strong>. Alchemists discovered that when this essence is subjected to extreme heat in the fusion crucible, it crystallizes into metallic containment shells—the legendary <strong>Dragon Eggs</strong>.
+                </p>
+                <p>
+                    Forged through meticulous tier-based blending, these eggs hatch into formidable dragon wyrms. Each progressive tier—from the steadfast Bronze to the mythic Platinum apex—requires immense sacrifice, precise compounding, and unwavering dedication from tamers across the blockchain.
                 </p>
             </div>
         </section>
 
-        <!-- Main Dashboard: Inventory & Simulator -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Player Instructions Section -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+                <div class="flex items-center space-x-3">
+                    <span class="text-2xl text-amber-400"><i class="fa-solid fa-droplet"></i></span>
+                    <h3 class="font-bold text-lg text-slate-100">1. Acquire & Unbox Essence</h3>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                    Mysterious Dragon Essence is priced at a micro-transaction friendly <strong>0.01 WAX</strong> so anyone can enter the market. Purchase your Essence packs directly via AtomicHub Drops, then burn 3x Essence in NeftyBlocks to roll for random metallic eggs.
+                </p>
+            </div>
 
-            <!-- Inventory Panel -->
-            <div class="lg:col-span-1 bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-                    <h2 class="text-lg font-bold text-slate-200 flex items-center gap-2">
-                        <i class="fa-solid fa-boxes-stacked text-amber-400"></i> Vault Inventory
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+                <div class="flex items-center space-x-3">
+                    <span class="text-2xl text-amber-400"><i class="fa-solid fa-fire-burner"></i></span>
+                    <h3 class="font-bold text-lg text-slate-100">2. Fuse & Upgrade Tiers</h3>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                    Utilize NeftyBlocks Blends to combine 3 matching eggs or dragons. Higher tiers command staggering valuations, rewarding early adopters and master alchemists who manage the scarce Platinum supply.
+                </p>
+            </div>
+        </section>
+
+        <!-- Economic Valuation Matrix -->
+        <section class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6">
+            <div class="border-b border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-100 flex items-center gap-2">
+                        <i class="fa-solid fa-calculator text-amber-400"></i> Economic Valuation Matrix
                     </h2>
-                    <button onclick="resetInventory()" class="text-xs text-slate-400 hover:text-red-400 transition">Reset Local</button>
+                    <p class="text-xs text-slate-400">Strict ratio-based pricing reflecting intrinsic crafting costs.</p>
                 </div>
-
-                <div id="inventory-list" class="space-y-2.5">
-                    <!-- Dynamic Inventory items populate here -->
-                </div>
-
-                <div class="pt-2 space-y-2">
-                    <!-- Real On-Chain Buy with WAX -->
-                    <button onclick="buyEssenceWithWAX(3)" class="w-full py-3 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-extrabold rounded-xl shadow-lg shadow-amber-500/10 transition flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-coins"></i> Buy 1x Essence (3 WAX)
-                    </button>
-                    <!-- Local Simulator Free Mint -->
-                    <button onclick="mintEssence(10)" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold rounded-xl text-xs transition flex items-center justify-center gap-2 border border-slate-700">
-                        <i class="fa-solid fa-vial-circle-check"></i> Free Simulator Test (+10 Essence)
-                    </button>
-                </div>
+                <span class="text-xs bg-amber-500/10 text-amber-400 px-3 py-1 rounded-full border border-amber-500/20 font-semibold self-start">
+                    Base Essence = 0.01 WAX
+                </span>
             </div>
 
-            <!-- Fusion & Unboxing Alchemy Hub -->
-            <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
-                <div class="border-b border-slate-800 pb-4">
-                    <h2 class="text-lg font-bold text-slate-200 flex items-center gap-2">
-                        <i class="fa-solid fa-fire-burner text-amber-400"></i> Fusion & Unboxing Crucible
-                    </h2>
-                    <p class="text-xs text-slate-400">Simulate on-chain blends and RNG unboxing algorithms.</p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    
-                    <!-- Essence Roll -->
-                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="font-bold text-amber-400 text-sm">3x Essence Unboxing</h3>
-                                <p class="text-xs text-slate-400">Burn 3x Essence for a random Egg drop.</p>
-                            </div>
-                            <span class="text-xs bg-slate-800 text-slate-300 px-2 py-0.5 rounded">RNG</span>
-                        </div>
-                        <button onclick="unboxingRoll()" class="w-full py-2 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 rounded-lg text-xs font-bold transition">
-                            Burn 3x Essence
-                        </button>
-                    </div>
-
-                    <!-- Bronze Fusion -->
-                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="font-bold text-amber-600 text-sm">3x Bronze Egg Fusion</h3>
-                                <p class="text-xs text-slate-400">Yields: Silver Egg / Bronze Dragon.</p>
-                            </div>
-                            <span class="text-xs bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Blend</span>
-                        </div>
-                        <button onclick="fuseEggs('bronze')" class="w-full py-2 bg-amber-700/20 hover:bg-amber-700/30 text-amber-400 border border-amber-700/30 rounded-lg text-xs font-bold transition">
-                            Fuse 3x Bronze Eggs
-                        </button>
-                    </div>
-
-                    <!-- Silver Fusion -->
-                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="font-bold text-slate-300 text-sm">3x Silver Egg Fusion</h3>
-                                <p class="text-xs text-slate-400">Yields: Gold Egg / Silver Dragon.</p>
-                            </div>
-                            <span class="text-xs bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Blend</span>
-                        </div>
-                        <button onclick="fuseEggs('silver')" class="w-full py-2 bg-slate-700/20 hover:bg-slate-700/30 text-slate-200 border border-slate-600/30 rounded-lg text-xs font-bold transition">
-                            Fuse 3x Silver Eggs
-                        </button>
-                    </div>
-
-                    <!-- Gold Fusion -->
-                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="font-bold text-yellow-400 text-sm">3x Gold Egg Fusion</h3>
-                                <p class="text-xs text-slate-400">Yields: Gold / Platinum Dragon.</p>
-                            </div>
-                            <span class="text-xs bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Blend</span>
-                        </div>
-                        <button onclick="fuseEggs('gold')" class="w-full py-2 bg-yellow-500/20 hover:bg-yellow-500/30 text-yellow-300 border border-yellow-500/30 rounded-lg text-xs font-bold transition">
-                            Fuse 3x Gold Eggs
-                        </button>
-                    </div>
-
-                </div>
-
-                <!-- Live Log Terminal -->
-                <div class="bg-slate-950 rounded-xl p-4 border border-slate-800 space-y-2">
-                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
-                        <i class="fa-solid fa-terminal text-emerald-400"></i> Fusion Activity Terminal
-                    </h3>
-                    <div id="activity-log" class="h-32 overflow-y-auto text-xs font-mono space-y-1 text-slate-300">
-                        <p class="text-slate-500">> System initialized. Ready for alchemy actions.</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Card Compendium -->
-        <section class="space-y-6">
-            <div class="border-b border-slate-800 pb-4">
-                <h2 class="text-xl font-bold text-slate-200 flex items-center gap-2">
-                    <i class="fa-solid fa-book-bookmark text-amber-400"></i> Card Compendium
-                </h2>
-                <p class="text-xs text-slate-400">Official assets and lore in the Dragon Prime collection.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="compendium-grid">
-                <!-- Populated via JS -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                    <thead>
+                        <tr class="border-b border-slate-800 text-slate-400">
+                            <th class="py-3 px-4 font-semibold">Asset Name</th>
+                            <th class="py-3 px-4 font-semibold">Classification</th>
+                            <th class="py-3 px-4 font-semibold">Scaling Ratio Rule</th>
+                            <th class="py-3 px-4 font-semibold text-right">Target Value (WAX)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800/60 text-slate-300 font-mono">
+                        <tr>
+                            <td class="py-3.5 px-4 font-bold text-amber-400">🧪 Mysterious Dragon Essence</td>
+                            <td class="py-3.5 px-4 font-sans text-slate-400">Essence</td>
+                            <td class="py-3.5 px-4 font-sans text-slate-400">Base Unit</td>
+                            <td class="py-3.5 px-4 text-right font-bold text-amber-400">0.01 WAX</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3.5 px-4 font-bold text-amber-600">🥉 Bronze Dragon Egg</td>
+                            <td class="py-3.5 px-4 font-sans text-slate-400">Egg (Common)</td>
+                            <td class="py-3.5 px-4 font-sans text-slate-400">1,000× Essence</td>
+                            <td class="py-3.5 px-4 text-right">10.00 WAX</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3.5 px-4 font-bold text-slate-300">🥈 Silver Dragon Egg</td>
+                            <td class="py-3.5 px-4 font-sans text-slate-400">Egg (Uncommon)</td>
+                            <td class="py-3.5 px-4 font-sans text-slate-400">100× Bronze Egg</td>
+                            <td class="py-3.5 px-4 text-right">1,000.00 WAX</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3.5 px-4 font-bold text-yellow-400">🥇 Gold Dragon Egg</td>
+                            <td class="py-3.5 px-4 font-sans text-slate-400">Egg (Rare)</td>
+                            <td class="py-3.5 px-4 font-sans text-slate-400">50× Silver Egg</td>
+                            <td class="py-3.5 px-4 text-right">50,000.00 WAX</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3.5 px-4 font-bold text-slate-100">⚪ Platinum Dragon Egg</td>
+                            <td class="py-3.5 px-4 font-sans text-slate-400">Egg (Legendary)</td>
+                            <td class="py-3.5 px-4 font-sans text-slate-400">25× Gold Egg (Capped Supply: 100)</td>
+                            <td class="py-3.5 px-4 text-right text-emerald-400">1,250,000.00 WAX</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3.5 px-4 font-bold text-amber-500">🐉 Bronze Dragon</td>
+                            <td class="py-3.5 px-4 font-sans text-slate-400">Creature</td>
+                            <td class="py-3.5 px-4 font-sans text-slate-400">Slightly > 3× Bronze Eggs (30 WAX)</td>
+                            <td class="py-3.5 px-4 text-right font-bold text-amber-500">32.00 WAX</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3.5 px-4 font-bold text-slate-200">🐉 Silver Dragon</td>
+                            <td class="py-3.5 px-4 font-sans text-slate-400">Creature</td>
+                            <td class="py-3.5 px-4 font-sans text-slate-400">Slightly > 3× Silver Eggs (3,000 WAX)</td>
+                            <td class="py-3.5 px-4 text-right font-bold text-slate-200">3,200.00 WAX</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3.5 px-4 font-bold text-yellow-300">🐉 Gold Dragon</td>
+                            <td class="py-3.5 px-4 font-sans text-slate-400">Creature</td>
+                            <td class="py-3.5 px-4 font-sans text-slate-400">Slightly > 3× Gold Eggs (150,000 WAX)</td>
+                            <td class="py-3.5 px-4 text-right font-bold text-yellow-300">160,000.00 WAX</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3.5 px-4 font-bold text-amber-200">👑 Platinum Dragon</td>
+                            <td class="py-3.5 px-4 font-sans text-slate-400">Apex Creature</td>
+                            <td class="py-3.5 px-4 font-sans text-slate-400">Slightly > 3× Platinum Eggs (3.75M WAX)</td>
+                            <td class="py-3.5 px-4 text-right font-bold text-amber-200">4,000,000.00 WAX</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 
     </main>
 
-    <!-- Wallet Selection Modal -->
-    <div id="wallet-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-md w-full space-y-5 shadow-2xl relative">
-            <button onclick="closeWalletModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-100 transition">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-            <div class="space-y-1">
-                <h3 class="text-lg font-bold text-slate-100 flex items-center gap-2">
-                    <i class="fa-solid fa-wallet text-amber-400"></i> Connect WAX Wallet
-                </h3>
-                <p class="text-xs text-slate-400">Select your preferred wallet to authenticate on the WAX blockchain.</p>
-            </div>
-            
-            <div class="space-y-3">
-                <!-- MyCloud Wallet Option -->
-                <button onclick="loginMyCloudWallet()" class="w-full p-4 bg-slate-950 hover:bg-slate-800 border border-slate-800 hover:border-amber-500/40 rounded-xl transition flex items-center justify-between group">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">☁️</span>
-                        <div class="text-left">
-                            <h4 class="text-sm font-bold text-slate-200 group-hover:text-amber-400">MyCloud Wallet</h4>
-                            <p class="text-xs text-slate-400">Social login & passkeys (mycloudwallet.com)</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-amber-400"></i>
-                </button>
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 py-8 text-center text-xs text-slate-500 space-y-2">
+        <p>Dragon Prime: Fusion TCG — Powered by the WAX Blockchain.</p>
+        <p>All assets managed via AtomicHub & NeftyBlocks.</p>
+    </footer>
 
-                <!-- Anchor Wallet Option -->
-                <button onclick="loginAnchorWallet()" class="w-full p-4 bg-slate-950 hover:bg-slate-800 border border-slate-800 hover:border-blue-500/40 rounded-xl transition flex items-center justify-between group">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">⚓</span>
-                        <div class="text-left">
-                            <h4 class="text-sm font-bold text-slate-200 group-hover:text-blue-400">Anchor Wallet</h4>
-                            <p class="text-xs text-slate-400">Desktop & Mobile app signing</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-blue-400"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // State Management
-        const state = {
-            userAccount: null,
-            walletType: null, // 'mycloud' or 'anchor'
-            essence: 12,
-            eggs: { bronze: 3, silver: 1, gold: 0, platinum: 0 },
-            dragons: { bronze: 0, silver: 0, gold: 0, platinum: 0 }
-        };
-
-        // Initialize WAX Cloud Wallet SDK safely
-        let wax = null;
-        try {
-            if (typeof waxjs !== 'undefined') {
-                wax = new waxjs.WaxJS({
-                    rpcEndpoint: 'https://wax.greymass.com'
-                });
-            }
-        } catch (e) {
-            console.warn("WAX Cloud Wallet SDK initialized in offline mode.");
-        }
-
-        const compendium = [
-            { id: 'essence', name: 'Mysterious Dragon Essence', type: 'Essence', rarity: 'Common', icon: '🧪', desc: 'Raw crystallised energy burned to forge draconic eggs.' },
-            { id: 'egg_bronze', name: 'Bronze Dragon Egg', type: 'Egg', rarity: 'Common', icon: '🥚', desc: 'Standard metallic egg containing ancient vitality.' },
-            { id: 'egg_silver', name: 'Silver Dragon Egg', type: 'Egg', rarity: 'Uncommon', icon: '🥚', desc: 'Refined metallic egg infused with lunar energy.' },
-            { id: 'egg_gold', name: 'Gold Dragon Egg', type: 'Egg', rarity: 'Rare', icon: '🥚', desc: 'Radiant egg housing high-tier draconic souls.' },
-            { id: 'egg_plat', name: 'Platinum Dragon Egg', type: 'Egg', rarity: 'Legendary', icon: '🥚', desc: 'Extremely scarce egg with capped supply.' },
-            { id: 'dragon_bronze', name: 'Bronze Dragon', type: 'Creature', rarity: 'Common', icon: '🐉', desc: 'Fierce bronze dragon wyrm with steadfast defense.' },
-            { id: 'dragon_silver', name: 'Silver Dragon', type: 'Creature', rarity: 'Uncommon', icon: '🐉', desc: 'Agile silver dragon wyrm harnessing storm power.' },
-            { id: 'dragon_gold', name: 'Gold Dragon', type: 'Creature', rarity: 'Rare', icon: '🐉', desc: 'Majestic golden wyrm radiating solar fire.' },
-            { id: 'dragon_plat', name: 'Platinum Dragon', type: 'Creature', rarity: 'Legendary', icon: '👑', desc: 'Mythical apex wyrm of supreme cosmic power.' }
-        ];
-
-        function log(msg) {
-            const container = document.getElementById('activity-log');
-            const p = document.createElement('p');
-            p.innerHTML = `> ${msg}`;
-            container.appendChild(p);
-            container.scrollTop = container.scrollHeight;
-        }
-
-        function openWalletModal() {
-            document.getElementById('wallet-modal').classList.remove('hidden');
-        }
-
-        function closeWalletModal() {
-            document.getElementById('wallet-modal').classList.add('hidden');
-        }
-
-        async function loginMyCloudWallet() {
-            closeWalletModal();
-            if (!wax) {
-                log(`<span class="text-amber-400">MyCloud Wallet SDK unavailable. Running in local mode.</span>`);
-                return;
-            }
-            try {
-                log(`Connecting to MyCloud Wallet...`);
-                const userAccount = await wax.login();
-                state.userAccount = userAccount;
-                state.walletType = 'mycloud';
-                
-                document.getElementById('wallet-btn-text').innerText = userAccount;
-                document.getElementById('network-badge').innerText = 'MyCloud Connected';
-                document.getElementById('network-badge').className = 'hidden sm:inline-flex text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20 font-semibold';
-                
-                log(`<span class="text-emerald-400 font-bold">Successfully connected via MyCloud Wallet: ${userAccount}</span>`);
-            } catch (err) {
-                log(`<span class="text-red-400">MyCloud Wallet Login Cancelled or Failed: ${err.message || err}</span>`);
-            }
-        }
-
-        async function loginAnchorWallet() {
-            closeWalletModal();
-            try {
-                log(`Initiating Anchor Wallet connection...`);
-                const accountName = prompt("Enter your WAX Anchor Account Name (e.g. myaccount.gm):");
-                if (accountName) {
-                    state.userAccount = accountName.trim();
-                    state.walletType = 'anchor';
-
-                    document.getElementById('wallet-btn-text').innerText = state.userAccount;
-                    document.getElementById('network-badge').innerText = 'Anchor Connected';
-                    document.getElementById('network-badge').className = 'hidden sm:inline-flex text-xs bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full border border-blue-500/20 font-semibold';
-
-                    log(`<span class="text-blue-400 font-bold">Anchor Wallet set for account: ${state.userAccount}</span>`);
-                } else {
-                    log(`<span class="text-slate-400">Anchor Wallet login cancelled.</span>`);
-                }
-            } catch (err) {
-                log(`<span class="text-red-400">Anchor Login Error: ${err.message || err}</span>`);
-            }
-        }
-
-        async function buyEssenceWithWAX(waxAmount = 3) {
-            if (!state.userAccount) {
-                log(`<span class="text-amber-400">Please connect your WAX Wallet first before purchasing Essence.</span>`);
-                openWalletModal();
-                return;
-            }
-
-            log(`Initiating transaction: Purchasing 1x Essence for ${waxAmount}.00000000 WAX...`);
-
-            if (state.walletType === 'mycloud' && wax) {
-                try {
-                    const result = await wax.api.transact({
-                        actions: [{
-                            account: 'eosio.token',
-                            name: 'transfer',
-                            authorization: [{
-                                actor: state.userAccount,
-                                permission: 'active',
-                            }],
-                            data: {
-                                from: state.userAccount,
-                                to: 'dragonprime1',
-                                quantity: `${parseFloat(waxAmount).toFixed(8)} WAX`,
-                                memo: 'Buy 1x Mysterious Dragon Essence',
-                            },
-                        }]
-                    }, {
-                        blocksBehind: 3,
-                        expireSeconds: 30,
-                    });
-
-                    state.essence += 1;
-                    log(`<span class="text-emerald-400 font-bold">Transaction Success! Tx ID: ${result.transaction_id.substring(0, 10)}...</span>`);
-                    log(`Received 1x Mysterious Dragon Essence.`);
-                    updateUI();
-                } catch (err) {
-                    log(`<span class="text-red-400">Transaction Failed: ${err.message || err}</span>`);
-                }
-            } else {
-                state.essence += 1;
-                log(`<span class="text-blue-400 font-bold">Payment simulated for ${state.userAccount}.</span>`);
-                log(`Added 1x Mysterious Dragon Essence to vault.`);
-                updateUI();
-            }
-        }
-
-        function updateUI() {
-            const invList = document.getElementById('inventory-list');
-            invList.innerHTML = `
-                <div class="flex justify-between items-center p-3 bg-slate-950 rounded-xl border border-slate-800">
-                    <span class="text-xs font-medium">🧪 Mysterious Dragon Essence</span>
-                    <span class="font-bold text-amber-400 text-sm">${state.essence}</span>
-                </div>
-                <div class="flex justify-between items-center p-3 bg-slate-950 rounded-xl border border-slate-800">
-                    <span class="text-xs font-medium">🥉 Bronze Dragon Eggs</span>
-                    <span class="font-bold text-amber-600 text-sm">${state.eggs.bronze}</span>
-                </div>
-                <div class="flex justify-between items-center p-3 bg-slate-950 rounded-xl border border-slate-800">
-                    <span class="text-xs font-medium">🥈 Silver Dragon Eggs</span>
-                    <span class="font-bold text-slate-300 text-sm">${state.eggs.silver}</span>
-                </div>
-                <div class="flex justify-between items-center p-3 bg-slate-950 rounded-xl border border-slate-800">
-                    <span class="text-xs font-medium">🥇 Gold Dragon Eggs</span>
-                    <span class="font-bold text-yellow-400 text-sm">${state.eggs.gold}</span>
-                </div>
-                <div class="flex justify-between items-center p-3 bg-slate-950 rounded-xl border border-slate-800">
-                    <span class="text-xs font-medium">⚪ Platinum Dragon Eggs</span>
-                    <span class="font-bold text-slate-100 text-sm">${state.eggs.platinum}</span>
-                </div>
-                <div class="flex justify-between items-center p-3 bg-slate-950 rounded-xl border border-amber-500/20">
-                    <span class="text-xs font-medium">🐉 Bronze Dragon</span>
-                    <span class="font-bold text-amber-500 text-sm">${state.dragons.bronze}</span>
-                </div>
-                <div class="flex justify-between items-center p-3 bg-slate-950 rounded-xl border border-amber-500/20">
-                    <span class="text-xs font-medium">🐉 Silver Dragon</span>
-                    <span class="font-bold text-slate-200 text-sm">${state.dragons.silver}</span>
-                </div>
-                <div class="flex justify-between items-center p-3 bg-slate-950 rounded-xl border border-amber-500/20">
-                    <span class="text-xs font-medium">🐉 Gold Dragon</span>
-                    <span class="font-bold text-yellow-400 text-sm">${state.dragons.gold}</span>
-                </div>
-                <div class="flex justify-between items-center p-3 bg-slate-950 rounded-xl border border-amber-500/20">
-                    <span class="text-xs font-medium">👑 Platinum Dragon</span>
-                    <span class="font-bold text-amber-200 text-sm">${state.dragons.platinum}</span>
-                </div>
-            `;
-        }
-
-        function renderCompendium() {
-            const grid = document.getElementById('compendium-grid');
-            grid.innerHTML = compendium.map(card => `
-                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 card-gradient hover:border-amber-500/30 transition">
-                    <div class="flex justify-between items-center">
-                        <span class="text-3xl">${card.icon}</span>
-                        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-800 text-slate-300">${card.rarity}</span>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-slate-100 text-base">${card.name}</h3>
-                        <p class="text-xs text-amber-400 font-medium">${card.type}</p>
-                    </div>
-                    <p class="text-xs text-slate-400 leading-relaxed">${card.desc}</p>
-                </div>
-            `).join('');
-        }
-
-        function mintEssence(amt) {
-            state.essence += amt;
-            log(`Minted +${amt} Mysterious Dragon Essence (Simulator Mode).`);
-            updateUI();
-        }
-
-        function unboxingRoll() {
-            if (state.essence < 3) {
-                log(`<span class="text-red-400">Error: Requires 3x Mysterious Dragon Essence.</span>`);
-                return;
-            }
-            state.essence -= 3;
-            const roll = Math.random() * 100;
-            if (roll < 75.0) {
-                state.eggs.bronze++;
-                log(`Burned 3x Essence -> <span class="text-amber-500">Bronze Dragon Egg</span>!`);
-            } else if (roll < 94.5) {
-                state.eggs.silver++;
-                log(`Burned 3x Essence -> <span class="text-slate-300">Silver Dragon Egg</span>!`);
-            } else if (roll < 99.5) {
-                state.eggs.gold++;
-                log(`Burned 3x Essence -> <span class="text-yellow-400">Gold Dragon Egg</span>!`);
-            } else {
-                state.eggs.platinum++;
-                log(`Burned 3x Essence -> <span class="text-slate-100 font-bold">PLATINUM DRAGON EGG</span>!`);
-            }
-            updateUI();
-        }
-
-        function fuseEggs(tier) {
-            if (state.eggs[tier] < 3) {
-                log(`<span class="text-red-400">Error: Requires 3x ${tier.toUpperCase()} Dragon Eggs.</span>`);
-                return;
-            }
-            state.eggs[tier] -= 3;
-            const roll = Math.random() * 100;
-
-            if (tier === 'bronze') {
-                if (roll < 65) {
-                    state.eggs.silver++;
-                    log(`Fused 3x Bronze Eggs -> <span class="text-slate-300">Silver Dragon Egg</span>!`);
-                } else if (roll < 95) {
-                    state.dragons.bronze++;
-                    log(`Fused 3x Bronze Eggs -> <span class="text-amber-500 font-bold">Bronze Dragon</span>!`);
-                } else {
-                    state.eggs.gold++;
-                    log(`Fused 3x Bronze Eggs -> <span class="text-yellow-400 font-bold">Gold Dragon Egg</span>!`);
-                }
-            } else if (tier === 'silver') {
-                if (roll < 60) {
-                    state.eggs.gold++;
-                    log(`Fused 3x Silver Eggs -> <span class="text-yellow-400">Gold Dragon Egg</span>!`);
-                } else if (roll < 95) {
-                    state.dragons.silver++;
-                    log(`Fused 3x Silver Eggs -> <span class="text-slate-200 font-bold">Silver Dragon</span>!`);
-                } else {
-                    state.eggs.platinum++;
-                    log(`Fused 3x Silver Eggs -> <span class="text-slate-100 font-bold">Platinum Dragon Egg</span>!`);
-                }
-            } else if (tier === 'gold') {
-                if (roll < 75) {
-                    state.dragons.gold++;
-                    log(`Fused 3x Gold Eggs -> <span class="text-yellow-400 font-bold">Gold Dragon</span>!`);
-                } else if (roll < 90) {
-                    state.eggs.platinum++;
-                    log(`Fused 3x Gold Eggs -> <span class="text-slate-100 font-bold">Platinum Dragon Egg</span>!`);
-                } else {
-                    state.dragons.platinum++;
-                    log(`Fused 3x Gold Eggs -> <span class="text-amber-200 font-bold">PLATINUM DRAGON</span>!`);
-                }
-            }
-            updateUI();
-        }
-
-        function resetInventory() {
-            state.essence = 12;
-            state.eggs = { bronze: 3, silver: 1, gold: 0, platinum: 0 };
-            state.dragons = { bronze: 0, silver: 0, gold: 0, platinum: 0 };
-            log(`Inventory reset to default.`);
-            updateUI();
-        }
-
-        // Initialize UI
-        updateUI();
-        renderCompendium();
-    </script>
 </body>
 </html>
