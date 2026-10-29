@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Prime: Fusion TCG | WAX dApp & Simulator</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dragon: {
+                            dark: '#0a0a0f',
+                            card: '#12131c',
+                            gold: '#fbbf24',
+                            bronze: '#d97706',
+                            silver: '#94a3b8',
+                            platinum: '#38bdf8',
+                            fire: '#ef4444'
+                        }
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .fantasy-font { font-family: 'Cinzel', serif; }
+        .gold-text {
+            background: linear-gradient(135deg, #fef08a 0%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .platinum-text {
+            background: linear-gradient(135deg, #e0f2fe 0%, #0284c7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-card-glow {
+            box-shadow: 0 0 25px -5px rgba(217, 119, 6, 0.15);
+        }
+        .bg-platinum-glow {
+            box-shadow: 0 0 30px -5px rgba(56, 189, 248, 0.25);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0f; }
+        ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #374151; }
+    </style>
+</head>
+<body class="bg-dragon-dark text-gray-200 font-sans min-h-screen flex flex-col selection:bg-amber-500 selection:text-black">
+
+    <!-- NAVIGATION HEADER -->
+    <header class="sticky top-0 z-40 bg-dragon-dark/90 backdrop-blur-md border-b border-amber-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-600 to-yellow-400 flex items-center justify-center text-black font-extrabold text-xl shadow-lg shadow-amber-500/20">
+                    <i class="fa-solid fa-dragon"></i>
+                </div>
+                <div>
+                    <span class="fantasy-font text-lg font-bold tracking-wider gold-text block leading-none">DRAGON PRIME</span>
+                    <span class="text-[10px] text-gray-400 font-mono tracking-widest uppercase">FUSION TCG • WAX</span>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                <a href="#simulator" class="hover:text-dragon-gold transition-colors flex items-center gap-2"><i class="fa-solid fa-wand-magic-sparkles text-xs text-dragon-gold"></i> Simulator</a>
+                <a href="#lore" class="hover:text-dragon-gold transition-colors">Lore & Realm</a>
+                <a href="#hierarchy" class="hover:text-dragon-gold transition-colors">Egg Hierarchy</a>
+                <a href="#cards" class="hover:text-dragon-gold transition-colors">Card Compendium</a>
+                <a href="#hosting-guide" class="hover:text-dragon-gold transition-colors text-amber-300 font-bold"><i class="fa-solid fa-cloud-arrow-up text-xs"></i> Deploy Free</a>
+                <a href="#setup-guide" class="hover:text-dragon-gold transition-colors">AtomicHub Guide</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button onclick="scrollToSim()" class="bg-gradient-to-r from-amber-600 to-yellow-500 hover:from-amber-500 hover:to-yellow-400 text-black font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-xl shadow-lg shadow-amber-500/20 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-fire"></i> Play Simulator
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center overflow-hidden">
+        <div class="absolute inset-0 -z-10 flex items-center justify-center">
+            <div class="w-[600px] h-[600px] bg-amber-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+            <div class="w-[400px] h-[400px] bg-sky-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+        </div>
+
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-950/60 border border-amber-500/30 text-amber-400 text-xs font-semibold mb-6">
+            <i class="fa-solid fa-cubes-stacked"></i> AtomicAssets Standard • WAX Blockchain dApp
+        </div>
+
+        <h1 class="fantasy-font text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 uppercase">
+            Gather Essence. <br/>
+            <span class="gold-text">Fuse Eggs.</span> Claim Glory.
+        </h1>
+
+        <p class="max-w-2xl mx-auto text-gray-400 text-base sm:text-lg leading-relaxed mb-8">
+            Enter the Prime Realms where ancient draconic vitality is bound into metallic egg tiers. Burn raw Essence, trigger probability-driven unboxings, and fuse matching tiers to hatch elite Dragon Wyrms.
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center gap-4">
+            <a href="#simulator" class="bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-300 text-black font-bold text-sm uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-xl shadow-amber-500/25 transition-all">
+                Launch Live Simulator
+            </a>
+            <a href="#cards" class="bg-dragon-card border border-gray-800 hover:border-amber-500/50 text-gray-300 hover:text-white font-medium text-sm px-6 py-3.5 rounded-xl transition-all">
+                Explore Card Database
+            </a>
+        </div>
+    </section>
+
+    <!-- LIVE SIMULATOR SECTION -->
+    <section id="simulator" class="py-12 bg-dragon-card/60 border-y border-amber-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-2 block">Interactive On-Chain Logic</span>
+                <h2 class="fantasy-font text-3xl sm:text-4xl font-bold gold-text uppercase">
+                    Dragon Prime Alchemy Simulator
+                </h2>
+                <p class="text-gray-400 text-sm mt-2 max-w-xl mx-auto">
+                    Simulate real WAX blend smart contract interactions. Mint test Essence, unbox randomized Egg tiers, and fuse 3 matching Eggs into high-tier dragons!
+                </p>
+            </div>
+
+            <!-- INVENTORY & ACTION GRID -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
+                <!-- PANEL 1: INVENTORY TRACKER -->
+                <div class="bg-dragon-dark border border-gray-800 p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between pb-4 border-b border-gray-800 mb-4">
+                            <h3 class="fantasy-font text-lg font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-box-archive text-amber-400"></i> Your Inventory
+                            </h3>
+                            <button onclick="resetInventory()" class="text-[11px] text-gray-500 hover:text-red-400 underline font-mono">Reset Demo</button>
+                        </div>
+
+                        <!-- ESSENCE COUNTER -->
+                        <div class="bg-dragon-card border border-amber-500/20 p-3.5 rounded-xl flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-amber-950/80 border border-amber-500/40 flex items-center justify-center text-amber-400 text-base">
+                                    <i class="fa-solid fa-vial-circle-check"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold text-gray-200">Mysterious Essence</div>
+                                    <div class="text-[10px] text-gray-400">Base Currency</div>
+                                </div>
+                            </div>
+                            <span id="count-essence" class="fantasy-font text-xl font-bold text-amber-400">10</span>
+                        </div>
+
+                        <!-- EGG TIERS -->
+                        <div class="space-y-2 mb-4">
+                            <div class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1">Egg Tiers Owned</div>
+                            <div class="grid grid-cols-2 gap-2 text-xs">
+                                <div class="bg-dragon-card/80 p-2.5 rounded-lg border border-amber-900/40 flex justify-between items-center">
+                                    <span class="text-amber-500 font-medium"><i class="fa-solid fa-egg text-[10px] mr-1"></i> Bronze</span>
+                                    <span id="count-egg-bronze" class="font-bold text-gray-200">0</span>
+                                </div>
+                                <div class="bg-dragon-card/80 p-2.5 rounded-lg border border-slate-700/50 flex justify-between items-center">
+                                    <span class="text-slate-300 font-medium"><i class="fa-solid fa-egg text-[10px] mr-1"></i> Silver</span>
+                                    <span id="count-egg-silver" class="font-bold text-gray-200">0</span>
+                                </div>
+                                <div class="bg-dragon-card/80 p-2.5 rounded-lg border border-yellow-600/40 flex justify-between items-center">
+                                    <span class="text-yellow-400 font-medium"><i class="fa-solid fa-egg text-[10px] mr-1"></i> Gold</span>
+                                    <span id="count-egg-gold" class="font-bold text-gray-200">0</span>
+                                </div>
+                                <div class="bg-dragon-card/80 p-2.5 rounded-lg border border-sky-500/40 flex justify-between items-center">
+                                    <span class="text-sky-300 font-medium"><i class="fa-solid fa-egg text-[10px] mr-1"></i> Platinum</span>
+                                    <span id="count-egg-platinum" class="font-bold text-gray-200">0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- DRAGONS HATCHED -->
+                        <div class="space-y-2">
+                            <div class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1">Hatched Dragons</div>
+                            <div class="grid grid-cols-2 gap-2 text-xs">
+                                <div class="bg-dragon-card/80 p-2.5 rounded-lg border border-amber-900/40 flex justify-between items-center">
+                                    <span class="text-amber-500 font-medium"><i class="fa-solid fa-dragon text-[10px] mr-1"></i> Bronze Wyrm</span>
+                                    <span id="count-dragon-bronze" class="font-bold text-gray-200">0</span>
+                                </div>
+                                <div class="bg-dragon-card/80 p-2.5 rounded-lg border border-slate-700/50 flex justify-between items-center">
+                                    <span class="text-slate-300 font-medium"><i class="fa-solid fa-dragon text-[10px] mr-1"></i> Silver Wyrm</span>
+                                    <span id="count-dragon-silver" class="font-bold text-gray-200">0</span>
+                                </div>
+                                <div class="bg-dragon-card/80 p-2.5 rounded-lg border border-yellow-600/40 flex justify-between items-center">
+                                    <span class="text-yellow-400 font-medium"><i class="fa-solid fa-dragon text-[10px] mr-1"></i> Gold Wyrm</span>
+                                    <span id="count-dragon-gold" class="font-bold text-gray-200">0</span>
+                                </div>
+                                <div class="bg-dragon-card/80 p-2.5 rounded-lg border border-sky-500/40 flex justify-between items-center">
+                                    <span class="text-sky-300 font-medium"><i class="fa-solid fa-dragon text-[10px] mr-1"></i> Platinum Wyrm</span>
+                                    <span id="count-dragon-platinum" class="font-bold text-gray-200">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="mintEssence()" class="mt-6 w-full bg-amber-900/40 hover:bg-amber-900/70 text-amber-300 font-bold text-xs py-2.5 px-4 rounded-xl border border-amber-600/40 transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-plus-circle"></i> Mint 5x Essence (Free Demo)
+                    </button>
+                </div>
+
+                <!-- PANEL 2: ESSENCE UNBOXING (ENTRY BLEND) -->
+                <div class="bg-dragon-dark border border-gray-800 p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="pb-4 border-b border-gray-800 mb-4">
+                            <span class="text-[10px] font-bold text-amber-400 uppercase tracking-widest block">Entry Alchemy</span>
+                            <h3 class="fantasy-font text-lg font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-fire-burner text-amber-500"></i> Essence Unboxing
+                            </h3>
+                        </div>
+
+                        <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                            Burn <strong class="text-amber-300">3x Mysterious Essence</strong> to invoke an elemental reaction and roll for a metallic Dragon Egg from the probability pool.
+                        </p>
+
+                        <!-- ODDS BREAKDOWN TABLE -->
+                        <div class="bg-dragon-card p-3 rounded-xl border border-gray-800 text-xs mb-6 space-y-2">
+                            <div class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-2">Unbox Drop Probabilities</div>
+                            <div class="flex justify-between items-center text-gray-300">
+                                <span><i class="fa-solid fa-egg text-amber-600 text-[10px] mr-1.5"></i> Bronze Egg</span>
+                                <span class="font-mono font-bold text-amber-400">75.0%</span>
+                            </div>
+                            <div class="flex justify-between items-center text-gray-300">
+                                <span><i class="fa-solid fa-egg text-slate-400 text-[10px] mr-1.5"></i> Silver Egg</span>
+                                <span class="font-mono font-bold text-slate-300">19.5%</span>
+                            </div>
+                            <div class="flex justify-between items-center text-gray-300">
+                                <span><i class="fa-solid fa-egg text-yellow-400 text-[10px] mr-1.5"></i> Gold Egg</span>
+                                <span class="font-mono font-bold text-yellow-400">5.0%</span>
+                            </div>
+                            <div class="flex justify-between items-center text-gray-300">
+                                <span><i class="fa-solid fa-egg text-sky-400 text-[10px] mr-1.5"></i> Platinum Egg</span>
+                                <span class="font-mono font-bold text-sky-400">0.5%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="unboxEssence()" class="w-full bg-gradient-to-r from-amber-600 to-yellow-500 hover:from-amber-500 hover:to-yellow-400 text-black font-extrabold text-xs uppercase tracking-wider py-3 px-4 rounded-xl shadow-lg shadow-amber-500/20 transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Burn 3x Essence & Roll
+                    </button>
+                </div>
+
+                <!-- PANEL 3: TIER FUSION & HATCHING -->
+                <div class="bg-dragon-dark border border-gray-800 p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="pb-4 border-b border-gray-800 mb-4">
+                            <span class="text-[10px] font-bold text-sky-400 uppercase tracking-widest block">Higher Alchemy</span>
+                            <h3 class="fantasy-font text-lg font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-dna text-sky-400"></i> Egg Tier Fusion
+                            </h3>
+                        </div>
+
+                        <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                            Burn <strong class="text-white">3x matching Eggs</strong> of any tier to roll for either a higher-tier metallic Egg or hatch a combat-ready Dragon Wyrm!
+                        </p>
+
+                        <!-- FUSION SELECTOR -->
+                        <div class="space-y-3 mb-6">
+                            <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider">Select Tier to Fuse (Cost: 3x Eggs)</label>
+                            <select id="fuse-tier-select" class="w-full bg-dragon-card border border-gray-700 text-xs text-gray-200 rounded-xl p-3 focus:outline-none focus:border-amber-500">
+                                <option value="bronze">3x Bronze Eggs ➔ Silver Egg (65%) / Bronze Dragon (30%) / Gold Egg (5%)</option>
+                                <option value="silver">3x Silver Eggs ➔ Gold Egg (60%) / Silver Dragon (35%) / Platinum Egg (5%)</option>
+                                <option value="gold">3x Gold Eggs ➔ Gold Dragon (75%) / Platinum Egg (15%) / Platinum Dragon (10%)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button onclick="fuseEggs()" class="w-full bg-gradient-to-r from-sky-600 to-cyan-500 hover:from-sky-500 hover:to-cyan-400 text-black font-extrabold text-xs uppercase tracking-wider py-3 px-4 rounded-xl shadow-lg shadow-sky-500/20 transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-atom"></i> Fuse 3x Selected Eggs
+                    </button>
+                </div>
+            </div>
+
+            <!-- RESULT LOG MODAL / MESSAGE DISPLAY -->
+            <div id="result-box" class="hidden bg-dragon-dark border border-amber-500/40 p-6 rounded-2xl text-center max-w-lg mx-auto shadow-2xl animate-fade-in">
+                <div id="result-icon" class="text-4xl mb-3 text-amber-400">
+                    <i class="fa-solid fa-gift"></i>
+                </div>
+                <div id="result-title" class="fantasy-font text-xl font-bold text-white mb-1">
+                    Unboxed Bronze Egg!
+                </div>
+                <div id="result-desc" class="text-xs text-gray-400 mb-4 leading-relaxed">
+                    You burned 3x Mysterious Essence and invoked the elemental pool.
+                </div>
+                <button onclick="closeResult()" class="bg-gray-800 hover:bg-gray-700 text-gray-200 font-bold text-xs py-2 px-6 rounded-xl transition-all">
+                    Continue
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- LORE & BACKSTORY SECTION -->
+    <section id="lore" class="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <span class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-2 block">The Chronicles</span>
+            <h2 class="fantasy-font text-3xl sm:text-4xl font-bold gold-text uppercase">
+                The Realm of Prime Alchemy
+            </h2>
+        </div>
+
+        <div class="bg-dragon-card border border-amber-900/30 p-8 sm:p-10 rounded-3xl relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 text-9xl text-amber-500/5 pointer-events-none">
+                <i class="fa-solid fa-dragon"></i>
+            </div>
+
+            <p class="text-gray-300 text-base sm:text-lg leading-relaxed mb-6">
+                Long before the realms divided, the Prime Wyrms ruled the cosmos, their vitality bound to elemental metals deep within the earth. As their physical forms faded into legend, their core essence remained suspended in crystallised <strong class="text-amber-400">Mysterious Dragon Essence</strong>—raw, volatile energy awaiting a worthy Alchemist.
+            </p>
+            <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                In <strong class="text-white">Dragon Prime: Fusion TCG</strong>, players harness the ancient laws of alchemy. By burning raw Essence, you trigger the forge of creation to reveal lost Dragon Eggs. Combine and fuse matching egg tiers to climb from humble <strong class="text-amber-500">Bronze</strong> to radiant <strong class="text-slate-300">Silver</strong>, majestic <strong class="text-yellow-400">Gold</strong>, and the mythical, scarce <strong class="text-sky-300">Platinum</strong>.
+            </p>
+        </div>
+    </section>
+
+    <!-- CARD COMPENDIUM SHOWCASE -->
+    <section id="cards" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <span class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-2 block">Card Database</span>
+            <h2 class="fantasy-font text-3xl sm:text-4xl font-bold gold-text uppercase">
+                Collection Compendium
+            </h2>
+            <p class="text-gray-400 text-sm mt-2">
+                Explore the complete collection of base materials, metallic eggs, and combat-ready dragon wyrms.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- CARD 1: ESSENCE -->
+            <div class="bg-dragon-card border border-amber-500/30 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-500/80 transition-all group">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="text-[10px] font-mono bg-amber-950 text-amber-300 px-2.5 py-1 rounded-md border border-amber-800 uppercase font-bold">Base Material</span>
+                        <span class="text-[10px] font-mono text-gray-400">Common • Inf. Supply</span>
+                    </div>
+                    <div class="h-40 bg-gradient-to-b from-amber-950/40 to-black rounded-xl flex items-center justify-center text-5xl text-amber-400 mb-4 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-vial-circle-check"></i>
+                    </div>
+                    <h3 class="fantasy-font text-lg font-bold text-white mb-2">Mysterious Dragon Essence</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                        Vibrating with latent draconic magic, this raw essence is the foundation of all life in the Prime Realms. Fuse 3 to roll for eggs.
+                    </p>
+                </div>
+                <div class="pt-3 border-t border-gray-800 text-[10px] font-mono text-amber-400 flex justify-between">
+                    <span>BURNABLE: YES</span>
+                    <span>CAT: ESSENCE</span>
+                </div>
+            </div>
+
+            <!-- CARD 2: BRONZE EGG -->
+            <div class="bg-dragon-card border border-amber-800/40 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-600 transition-all group">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="text-[10px] font-mono bg-amber-950 text-amber-400 px-2.5 py-1 rounded-md border border-amber-900 uppercase font-bold">Tier 1 Egg</span>
+                        <span class="text-[10px] font-mono text-gray-400">Common (75% Unbox)</span>
+                    </div>
+                    <div class="h-40 bg-gradient-to-b from-amber-950/50 to-black rounded-xl flex items-center justify-center text-5xl text-amber-600 mb-4 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-egg"></i>
+                    </div>
+                    <h3 class="fantasy-font text-lg font-bold text-amber-500 mb-2">Bronze Dragon Egg</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                        Warm to the touch and thick with grounded earth magic. Holds the foundational spark needed to begin your metallic ascent.
+                    </p>
+                </div>
+                <div class="pt-3 border-t border-gray-800 text-[10px] font-mono text-amber-500 flex justify-between">
+                    <span>BURNABLE: YES</span>
+                    <span>TIER: BRONZE</span>
+                </div>
+            </div>
+
+            <!-- CARD 3: SILVER EGG -->
+            <div class="bg-dragon-card border border-slate-700 p-5 rounded-2xl flex flex-col justify-between hover:border-slate-400 transition-all group">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="text-[10px] font-mono bg-slate-900 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700 uppercase font-bold">Tier 2 Egg</span>
+                        <span class="text-[10px] font-mono text-gray-400">Uncommon (19.5% Unbox)</span>
+                    </div>
+                    <div class="h-40 bg-gradient-to-b from-slate-900 to-black rounded-xl flex items-center justify-center text-5xl text-slate-300 mb-4 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-egg"></i>
+                    </div>
+                    <h3 class="fantasy-font text-lg font-bold text-slate-200 mb-2">Silver Dragon Egg</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                        Gleaming with a cool, moonlit sheen, this egg hums with refined power. Fuse to unlock noble gold lineage or silver dragons.
+                    </p>
+                </div>
+                <div class="pt-3 border-t border-gray-800 text-[10px] font-mono text-slate-300 flex justify-between">
+                    <span>BURNABLE: YES</span>
+                    <span>TIER: SILVER</span>
+                </div>
+            </div>
+
+            <!-- CARD 4: GOLD EGG -->
+            <div class="bg-dragon-card border border-yellow-600/50 p-5 rounded-2xl flex flex-col justify-between hover:border-yellow-400 transition-all group">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="text-[10px] font-mono bg-yellow-950 text-yellow-300 px-2.5 py-1 rounded-md border border-yellow-700 uppercase font-bold">Tier 3 Egg</span>
+                        <span class="text-[10px] font-mono text-gray-400">Rare (5.0% Unbox)</span>
+                    </div>
+                    <div class="h-40 bg-gradient-to-b from-yellow-950/60 to-black rounded-xl flex items-center justify-center text-5xl text-yellow-400 mb-4 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-egg"></i>
+                    </div>
+                    <h3 class="fantasy-font text-lg font-bold text-yellow-400 mb-2">Gold Dragon Egg</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                        Radiating brilliant heat and authority. Only those bold enough to risk Gold fusion stand a chance at manifesting Platinum.
+                    </p>
+                </div>
+                <div class="pt-3 border-t border-gray-800 text-[10px] font-mono text-yellow-400 flex justify-between">
+                    <span>BURNABLE: YES</span>
+                    <span>TIER: GOLD</span>
+                </div>
+            </div>
+
+            <!-- CARD 5: PLATINUM EGG -->
+            <div class="bg-dragon-card border border-sky-500/60 p-5 rounded-2xl flex flex-col justify-between hover:border-sky-300 transition-all group bg-platinum-glow">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="text-[10px] font-mono bg-sky-950 text-sky-300 px-2.5 py-1 rounded-md border border-sky-700 uppercase font-bold">Tier 4 Egg</span>
+                        <span class="text-[10px] font-mono text-sky-400 font-bold">Legendary (0.5% Unbox)</span>
+                    </div>
+                    <div class="h-40 bg-gradient-to-b from-sky-950/80 to-black rounded-xl flex items-center justify-center text-5xl text-sky-300 mb-4 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-egg"></i>
+                    </div>
+                    <h3 class="fantasy-font text-lg font-bold platinum-text mb-2">Platinum Dragon Egg</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                        An immaculate masterpiece of draconic perfection. Platinum Eggs are strictly capped in supply on AtomicHub.
+                    </p>
+                </div>
+                <div class="pt-3 border-t border-gray-800 text-[10px] font-mono text-sky-400 flex justify-between">
+                    <span>BURNABLE: YES</span>
+                    <span>CAP: 100 MAX</span>
+                </div>
+            </div>
+
+            <!-- CARD 6: PLATINUM DRAGON -->
+            <div class="bg-dragon-card border border-sky-400/80 p-5 rounded-2xl flex flex-col justify-between hover:border-sky-200 transition-all group shadow-xl">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="text-[10px] font-mono bg-sky-950 text-sky-200 px-2.5 py-1 rounded-md border border-sky-500 uppercase font-bold">Apex Creature</span>
+                        <span class="text-[10px] font-mono text-amber-400 font-bold">Mythic Wyrm</span>
+                    </div>
+                    <div class="h-40 bg-gradient-to-b from-sky-900/60 to-black rounded-xl flex items-center justify-center text-6xl text-sky-200 mb-4 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-dragon"></i>
+                    </div>
+                    <h3 class="fantasy-font text-lg font-bold text-sky-200 mb-1">Level 1 Platinum Dragon</h3>
+                    <div class="text-[11px] text-amber-400 font-bold mb-2">ATK: 9,500 | DEF: 8,800</div>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                        An apex predator born from high-level fusion mastery. Possesses unmatched combat stats and stands at the summit of Dragon Prime.
+                    </p>
+                </div>
+                <div class="pt-3 border-t border-gray-800 text-[10px] font-mono text-sky-300 flex justify-between">
+                    <span>CREATURE CARD</span>
+                    <span>LEVEL: 1</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FREE HOSTING & DEPLOYMENT GUIDE -->
+    <section id="hosting-guide" class="py-16 bg-gradient-to-b from-dragon-card/80 to-dragon-dark border-t border-amber-600/30">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-2 block">100% Free Hosting Blueprint</span>
+                <h2 class="fantasy-font text-3xl font-bold gold-text uppercase">
+                    How to Publish This Website Live
+                </h2>
+                <p class="text-gray-400 text-sm mt-2">
+                    You can host this exact website online completely free in under 5 minutes using GitHub Pages.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <!-- Option 1: GitHub Pages -->
+                <div class="bg-dragon-dark border border-gray-800 hover:border-amber-600/50 p-6 rounded-2xl flex flex-col justify-between transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <i class="fa-brands fa-github text-3xl text-white"></i>
+                            <span class="text-[10px] bg-emerald-950 text-emerald-300 px-2.5 py-1 rounded-full border border-emerald-800 font-bold uppercase">Recommended</span>
+                        </div>
+                        <h3 class="fantasy-font text-lg font-bold text-gray-100 mb-2">GitHub Pages</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                            Host directly from your code repository. Free SSL domain, automated builds, zero costs.
+                        </p>
+                        <ol class="text-[11px] text-gray-300 space-y-2 list-decimal list-inside font-mono">
+                            <li>Create a free <strong class="text-white">GitHub</strong> account.</li>
+                            <li>Create repo named <code class="text-amber-400">dragon-prime-tcg</code>.</li>
+                            <li>Upload this file as <code class="text-amber-400">index.html</code>.</li>
+                            <li>Go to <strong class="text-white">Settings &gt; Pages</strong> and enable <code class="text-emerald-400">main</code> branch.</li>
+                        </ol>
+                    </div>
+                    <div class="mt-6 pt-3 border-t border-gray-800 text-[10px] text-emerald-400 font-bold uppercase tracking-wider">
+                        URL: username.github.io/dragon-prime-tcg
+                    </div>
+                </div>
+
+                <!-- Option 2: Vercel -->
+                <div class="bg-dragon-dark border border-gray-800 hover:border-amber-600/50 p-6 rounded-2xl flex flex-col justify-between transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <i class="fa-solid fa-shapes text-3xl text-white"></i>
+                            <span class="text-[10px] bg-purple-950 text-purple-300 px-2.5 py-1 rounded-full border border-purple-800 font-bold uppercase">Fast CDN</span>
+                        </div>
+                        <h3 class="fantasy-font text-lg font-bold text-gray-100 mb-2">Vercel</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                            Drag-and-drop deployment with instant worldwide CDN delivery.
+                        </p>
+                        <ol class="text-[11px] text-gray-300 space-y-2 list-decimal list-inside font-mono">
+                            <li>Sign up at <strong class="text-white">vercel.com</strong>.</li>
+                            <li>Click <strong class="text-white">"Add New Project"</strong>.</li>
+                            <li>Import your GitHub repository.</li>
+                            <li>Click <strong class="text-purple-400">Deploy</strong>.</li>
+                        </ol>
+                    </div>
+                    <div class="mt-6 pt-3 border-t border-gray-800 text-[10px] text-purple-400 font-bold uppercase tracking-wider">
+                        URL: dragon-prime-tcg.vercel.app
+                    </div>
+                </div>
+
+                <!-- Option 3: Netlify -->
+                <div class="bg-dragon-dark border border-gray-800 hover:border-amber-600/50 p-6 rounded-2xl flex flex-col justify-between transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <i class="fa-solid fa-cloud text-3xl text-cyan-400"></i>
+                            <span class="text-[10px] bg-cyan-950 text-cyan-300 px-2.5 py-1 rounded-full border border-cyan-800 font-bold uppercase">No Git Needed</span>
+                        </div>
+                        <h3 class="fantasy-font text-lg font-bold text-gray-100 mb-2">Netlify Drop</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                            Deploy instantly without code repositories by dragging your folder into the browser.
+                        </p>
+                        <ol class="text-[11px] text-gray-300 space-y-2 list-decimal list-inside font-mono">
+                            <li>Visit <strong class="text-white">app.netlify.com/drop</strong>.</li>
+                            <li>Put <code class="text-amber-400">index.html</code> in a local folder.</li>
+                            <li>Drag folder into upload area.</li>
+                            <li>Live in seconds!</li>
+                        </ol>
+                    </div>
+                    <div class="mt-6 pt-3 border-t border-gray-800 text-[10px] text-cyan-400 font-bold uppercase tracking-wider">
+                        URL: dragon-prime.netlify.app
+                    </div>
+                </div>
+            </div>
+
+            <!-- LIVE WAX WALLET JS CONNECTOR SNIPPET -->
+            <div class="bg-dragon-dark border border-amber-900/40 rounded-xl p-6">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="fantasy-font text-lg font-bold text-amber-400 flex items-center gap-2">
+                        <i class="fa-solid fa-code text-amber-500"></i> WAX Cloud Wallet JS Integration Code
+                    </h3>
+                    <span class="text-[10px] font-mono text-gray-400">waxjs SDK</span>
+                </div>
+                <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                    To upgrade this simulator from mock local state to real WAX blockchain transactions on AtomicAssets, include the official <code class="text-amber-300">waxjs</code> script library:
+                </p>
+                <div class="bg-black/60 p-4 rounded-lg text-xs font-mono text-emerald-300 border border-gray-800 overflow-x-auto">
+<pre><code>&lt;script src="https://unpkg.com/waxjs@1.5.0/dist/waxjs.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  const wax = new waxjs.WaxJS({ rpcEndpoint: 'https://wax.greymass.com' });
+
+  async function loginWAXWallet() {
+    try {
+      const userAccount = await wax.login();
+      console.log("Connected WAX Wallet:", userAccount);
+    } catch (err) {
+      console.error("Wallet Connection Error:", err);
+    }
+  }
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black border-t border-gray-900 py-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-dragon text-amber-500"></i>
+                <span class="fantasy-font font-bold text-sm text-gray-200">Dragon Prime: Fusion TCG</span>
+            </div>
+            <div class="text-xs text-gray-500 font-mono text-center sm:text-right">
+                Built for WAX Blockchain • AtomicAssets Standard • Open Source MIT License
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE GAME LOGIC (JAVASCRIPT) -->
+    <script>
+        // GAME STATE TRACKER
+        let state = {
+            essence: 10,
+            eggs: { bronze: 0, silver: 0, gold: 0, platinum: 0 },
+            dragons: { bronze: 0, silver: 0, gold: 0, platinum: 0 }
+        };
+
+        // UPDATE UI METRICS
+        function updateUI() {
+            document.getElementById('count-essence').innerText = state.essence;
+            document.getElementById('count-egg-bronze').innerText = state.eggs.bronze;
+            document.getElementById('count-egg-silver').innerText = state.eggs.silver;
+            document.getElementById('count-egg-gold').innerText = state.eggs.gold;
+            document.getElementById('count-egg-platinum').innerText = state.eggs.platinum;
+
+            document.getElementById('count-dragon-bronze').innerText = state.dragons.bronze;
+            document.getElementById('count-dragon-silver').innerText = state.dragons.silver;
+            document.getElementById('count-dragon-gold').innerText = state.dragons.gold;
+            document.getElementById('count-dragon-platinum').innerText = state.dragons.platinum;
+        }
+
+        // MINT FREE ESSENCE FOR DEMO
+        function mintEssence() {
+            state.essence += 5;
+            updateUI();
+            showResult('fa-vial-circle-check', 'text-amber-400', 'Minted 5x Essence', '5x Mysterious Dragon Essence was added to your test inventory.');
+        }
+
+        // RESET INVENTORY
+        function resetInventory() {
+            state = {
+                essence: 10,
+                eggs: { bronze: 0, silver: 0, gold: 0, platinum: 0 },
+                dragons: { bronze: 0, silver: 0, gold: 0, platinum: 0 }
+            };
+            updateUI();
+            showResult('fa-rotate-left', 'text-gray-400', 'Simulator Reset', 'Inventory restored to 10 starting Essence.');
+        }
+
+        // UNBOX ESSENCE (BURN 3x ESSENCE -> ROLL EGG POOL)
+        function unboxEssence() {
+            if (state.essence < 3) {
+                showResult('fa-triangle-exclamation', 'text-red-400', 'Insufficient Essence', 'You need at least 3x Mysterious Dragon Essence to trigger an unboxing.');
+                return;
+            }
+
+            state.essence -= 3;
+            const rand = Math.random() * 100; // 0 - 100
+
+            if (rand < 75.0) { // 75.0% Bronze Egg
+                state.eggs.bronze++;
+                showResult('fa-egg', 'text-amber-600', 'Unboxed Bronze Egg!', 'Result: 75.0% Common Pool Roll. Added 1x Bronze Dragon Egg to inventory.');
+            } else if (rand < 94.5) { // 19.5% Silver Egg
+                state.eggs.silver++;
+                showResult('fa-egg', 'text-slate-300', 'Unboxed Silver Egg!', 'Result: 19.5% Uncommon Pool Roll. Added 1x Silver Dragon Egg to inventory.');
+            } else if (rand < 99.5) { // 5.0% Gold Egg
+                state.eggs.gold++;
+                showResult('fa-egg', 'text-yellow-400', 'Unboxed Gold Egg!', 'Result: 5.0% Rare Pool Roll. Added 1x Gold Dragon Egg to inventory.');
+            } else { // 0.5% Platinum Egg
+                state.eggs.platinum++;
+                showResult('fa-egg', 'text-sky-300', '🔥 Mythic Platinum Egg!', 'Result: 0.5% Legendary Pool Roll. You hatched an ultra-rare Platinum Egg!');
+            }
+
+            updateUI();
+        }
+
+        // FUSE 3 EGGS (UPGRADE OR HATCH DRAGON)
+        function fuseEggs() {
+            const selectedTier = document.getElementById('fuse-tier-select').value;
+
+            if (selectedTier === 'bronze') {
+                if (state.eggs.bronze < 3) {
+                    showResult('fa-triangle-exclamation', 'text-red-400', 'Need 3x Bronze Eggs', 'You require 3x Bronze Eggs in inventory to execute this fusion.');
+                    return;
+                }
+                state.eggs.bronze -= 3;
+                const rand = Math.random() * 100;
+                if (rand < 65) { // 65% Silver Egg
+                    state.eggs.silver++;
+                    showResult('fa-atom', 'text-slate-300', 'Fused Silver Egg!', 'Fusion result: 65% outcome. Upgraded 3x Bronze Eggs into 1x Silver Egg.');
+                } else if (rand < 95) { // 30% Bronze Dragon
+                    state.dragons.bronze++;
+                    showResult('fa-dragon', 'text-amber-500', 'Hatched Bronze Dragon!', 'Fusion result: 30% outcome. Hatched a Level 1 Bronze Dragon combatant!');
+                } else { // 5% Gold Egg
+                    state.eggs.gold++;
+                    showResult('fa-gem', 'text-yellow-400', 'Lucky Bonus: Gold Egg!', 'Fusion result: 5% critical success! Jumped straight to a Gold Dragon Egg.');
+                }
+            } else if (selectedTier === 'silver') {
+                if (state.eggs.silver < 3) {
+                    showResult('fa-triangle-exclamation', 'text-red-400', 'Need 3x Silver Eggs', 'You require 3x Silver Eggs in inventory to execute this fusion.');
+                    return;
+                }
+                state.eggs.silver -= 3;
+                const rand = Math.random() * 100;
+                if (rand < 60) { // 60% Gold Egg
+                    state.eggs.gold++;
+                    showResult('fa-atom', 'text-yellow-400', 'Fused Gold Egg!', 'Fusion result: 60% outcome. Upgraded 3x Silver Eggs into 1x Gold Egg.');
+                } else if (rand < 95) { // 35% Silver Dragon
+                    state.dragons.silver++;
+                    showResult('fa-dragon', 'text-slate-200', 'Hatched Silver Dragon!', 'Fusion result: 35% outcome. Hatched a Level 1 Silver Dragon Wyrm!');
+                } else { // 5% Platinum Egg
+                    state.eggs.platinum++;
+                    showResult('fa-crown', 'text-sky-300', 'Critical Jump: Platinum Egg!', 'Fusion result: 5% critical success! Manifested a Platinum Egg!');
+                }
+            } else if (selectedTier === 'gold') {
+                if (state.eggs.gold < 3) {
+                    showResult('fa-triangle-exclamation', 'text-red-400', 'Need 3x Gold Eggs', 'You require 3x Gold Eggs in inventory to execute this fusion.');
+                    return;
+                }
+                state.eggs.gold -= 3;
+                const rand = Math.random() * 100;
+                if (rand < 75) { // 75% Gold Dragon
+                    state.dragons.gold++;
+                    showResult('fa-dragon', 'text-yellow-400', 'Hatched Gold Dragon Wyrm!', 'Fusion result: 75% outcome. Hatched a majestic Level 1 Gold Dragon!');
+                } else if (rand < 90) { // 15% Platinum Egg
+                    state.eggs.platinum++;
+                    showResult('fa-egg', 'text-sky-300', 'Forged Platinum Egg!', 'Fusion result: 15% outcome. Fused 3x Gold Eggs into 1x Platinum Egg.');
+                } else { // 10% Platinum Dragon
+                    state.dragons.platinum++;
+                    showResult('fa-dragon', 'text-sky-200', '🔥 APEX HATCH: Platinum Dragon!', 'Fusion result: 10% apex outcome! Awakened a Level 1 Platinum Dragon!');
+                }
+            }
+
+            updateUI();
+        }
+
+        // SHOW POPUP MODAL
+        function showResult(icon, iconColor, title, desc) {
+            document.getElementById('result-icon').className = `text-4xl mb-3 ${iconColor}`;
+            document.getElementById('result-icon').innerHTML = `<i class="fa-solid ${icon}"></i>`;
+            document.getElementById('result-title').innerText = title;
+            document.getElementById('result-desc').innerText = desc;
+            document.getElementById('result-box').classList.remove('hidden');
+            document.getElementById('result-box').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function closeResult() {
+            document.getElementById('result-box').classList.add('hidden');
+        }
+
+        function scrollToSim() {
+            document.getElementById('simulator').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // INITIALIZE ON LOAD
+        window.onload = function() {
+            updateUI();
+        };
+    </script>
+</body>
+</html>
