@@ -1,33 +1,31 @@
-# Dragon Prime: Fusion TCG — Economy & Technical Specification
+# Dragon Prime: Fusion TCG
 
-Welcome to the official repository for **Dragon Prime: Fusion TCG**, a deflationary, burn-to-mint Trading Card Game built on the WAX blockchain using AtomicAssets.
+Official repository and economy specification for **Dragon Prime: Fusion TCG** on the WAX blockchain.
+
+## Ecosystem Overview
+
+* **Collection Name:** dragonprime1
+* **Schema Name:** dragoneggs
+* **Secondary Market Royalty:** 3.5%
+* **Primary Drop Platform:** MintyBlocks / Nefty Drops
+* **Base Item Price:** 2.00 WAX (Mysterious Dragon Essence)
+
+## Card Progression & Crafting Rules
+
+1. **Mysterious Dragon Essence** (Primary Drop at 2.00 WAX)
+2. **Dragon Egg**: Burn 4x Mysterious Dragon Essence
+3. **Bronze Dragon**: Burn 3x Dragon Eggs
+4. **Silver Dragon**: Burn 3x Bronze Dragons
+5. **Gold Dragon**: Burn 3x Silver Dragons
+6. **Platinum Dragon**: Burn 3x Gold Dragons *(Strict Cap: 1,000 Total Mints)*
+
+## Schema Attributes
+
+* `name` (String)
+* `img` (String / IPFS)
+* `category` (String)
+* `tier` (String)
+* `description` (String)
 
 ---
-
-## 📌 Ecosystem Parameters
-
-| Parameter | Value |
-| :--- | :--- |
-| **WAX Collection** | `dragonprime1` |
-| **Schema Name** | `dragoneggs` |
-| **Secondary Market Royalties** | `3.5%` (Locked) |
-| **Drop & Blending Platform** | MintyBlocks / NeftyFusion Protocol |
-| **Base Reagent Cost** | `2.00 WAX` per Mysterious Dragon Essence |
-
----
-
-## 🔮 Schema Attributes (Static & Immutable)
-
-All NFTs in the `dragoneggs` schema utilize the following standardized immutable attributes:
-
-* `name` *(String)* — Card Name
-* `img` *(String)* — IPFS Artwork Hash
-* `category` *(String)* — Card Category (`Essence`, `Egg`, `Dragon`)
-* `tier` *(String)* — Tier Grade (`Base`, `Incubation`, `Bronze`, `Silver`, `Gold`, `Platinum`)
-* `description` *(String)* — Lore and mechanics description text
-
----
-
-## ⚔️ Evolution & Synthesis Flow
-
-The game economy is powered by a progressive burn mechanism. Players purchase base reagents and blend them up through six sequential tiers:
+© 2026 Dragon Prime: Fusion TCG
