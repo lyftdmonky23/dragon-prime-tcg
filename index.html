@@ -1,190 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dragon Prime: Fusion TCG | Official Handbook</title>
-    <style>
-        :root {
-            --bg-color: #0b0f19;
-            --card-bg: #131b2e;
-            --accent-gold: #f59e0b;
-            --accent-purple: #8b5cf6;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --border-color: #1f2937;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        header {
-            background: linear-gradient(135deg, #1e1b4b, #31103f);
-            padding: 3rem 2rem;
-            text-align: center;
-            border-bottom: 2px solid var(--accent-gold);
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            color: var(--accent-gold);
-            letter-spacing: 1px;
-        }
-        header p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-top: 0.5rem;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-        section {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-        }
-        h2 {
-            color: var(--accent-gold);
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 0.5rem;
-            margin-top: 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-        th {
-            background-color: rgba(139, 92, 246, 0.1);
-            color: var(--accent-gold);
-            font-weight: 600;
-        }
-        tr:hover {
-            background-color: rgba(255, 255, 255, 0.02);
-        }
-        .highlight {
-            color: var(--accent-gold);
-            font-weight: bold;
-        }
-        ul {
-            padding-left: 1.5rem;
-        }
-        li {
-            margin-bottom: 0.5rem;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border-color);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dragon Prime: Fusion TCG - Player & Economy Handbook</title>
+  <style>
+    :root {
+      --bg-color: #0b0e14;
+      --card-bg: #161b22;
+      --accent: #ff8c00;
+      --accent-glow: rgba(255, 140, 0, 0.3);
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --border: #30363d;
+      --platinum: #e5e4e2;
+      --gold: #ffd700;
+      --silver: #c0c0c0;
+      --bronze: #cd7f32;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h1 {
+      color: var(--accent);
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--card-bg);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    section {
+      margin: 40px 0;
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    h2 {
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 8px;
+      margin-top: 0;
+      color: var(--text-main);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: #0d1117;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .card.bronze { border-left: 4px solid var(--bronze); }
+    .card.silver { border-left: 4px solid var(--silver); }
+    .card.gold { border-left: 4px solid var(--gold); }
+    .card.platinum { border-left: 4px solid var(--platinum); }
+
+    .multiplier-tag {
+      float: right;
+      font-weight: bold;
+      color: var(--accent);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background-color: #0d1117;
+      color: var(--accent);
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 50px;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+  </style>
 </head>
 <body>
 
+  <div class="container">
     <header>
-        <h1>Dragon Prime: Fusion TCG</h1>
-        <p>Official Player Mechanics & Evolution Guide on WAX Blockchain</p>
+      <div class="badge">WAX Blockchain Ecosystem</div>
+      <h1>Dragon Prime: Fusion TCG</h1>
+      <p>Official Player Handbook & Economy Architecture Specification</p>
     </header>
 
-    <div class="container">
-        <!-- Overview Section -->
-        <section>
-            <h2>🌌 Welcome, Tamers</h2>
-            <p>Welcome to <strong>Dragon Prime</strong>, a strategic card crafting and evolution game hosted on the WAX blockchain. Your journey revolves around harnessing elemental energy, incubating mysterious eggs, and evolving your dragon companions through increasingly powerful metallic tiers.</p>
-            <ul>
-                <li><strong>WAX Collection:</strong> <code>dragonprime1</code></li>
-                <li><strong>Schema:</strong> <code>dragonsandeggs</code></li>
-                <li><strong>Core Objective:</strong> Collect, burn, and evolve your way to the apex Platinum tier.</li>
-            </ul>
-        </section>
+    <section id="overview">
+      <h2>1. Ecosystem Overview</h2>
+      <p><strong>Dragon Prime: Fusion TCG</strong> features a deflationary, burn-to-mint evolution loop built on the WAX blockchain. Players acquire <em>Mysterious Dragon Essence</em> from primary drops, incubate them into <em>Dragon Eggs</em>, and evolve their dragons through four metallic tiers up to the ultra-rare <strong>Platinum Dragon</strong>.</p>
+      
+      <table>
+        <tr>
+          <th>Collection Identifier</th>
+          <td><code>dragonprime1</code></td>
+        </tr>
+        <tr>
+          <th>Schema Name</th>
+          <td><code>dragoneggs</code></td>
+        </tr>
+        <tr>
+          <th>Marketplace Royalty</th>
+          <td>3.5% (Locked Secondary Fee)</td>
+        </tr>
+        <tr>
+          <th>Primary Drop Venue</th>
+          <td>MintyBlocks / Nefty Drops</td>
+        </tr>
+      </table>
+    </section>
 
-        <!-- Progression & Evolution Loop -->
-        <section>
-            <h2>📈 The Evolution & Burning Cycle</h2>
-            <p>Dragon Prime utilizes a deflationary burn mechanic. To climb the ranks and achieve higher-tier power, players must sacrifice multiple copies of lower-tier assets. This keeps the ecosystem thriving and rewards dedicated collectors.</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Asset Tier</th>
-                        <th>Progression Role</th>
-                        <th>Evolution / Crafting Requirement</th>
-                        <th>Supply Model</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>🧪 Mysterious Dragon Essence</strong></td>
-                        <td>Base Resource</td>
-                        <td>Primary Drop Entry Point</td>
-                        <td>Infinite Supply</td>
-                    </tr>
-                    <tr>
-                        <td><strong>🥚 Dragon Egg</strong></td>
-                        <td>Incubation Stage</td>
-                        <td>Burn <strong>4x Mysterious Dragon Essence</strong></td>
-                        <td>Infinite Supply</td>
-                    </tr>
-                    <tr>
-                        <td><strong>🐉 Bronze Dragon Whelp</strong></td>
-                        <td>Tier 1 Hatchling</td>
-                        <td>Burn <strong>3x Dragon Eggs</strong></td>
-                        <td>Infinite Supply</td>
-                    </tr>
-                    <tr>
-                        <td><strong>🥈 Silver Dragon Whelp</strong></td>
-                        <td>Tier 2 Evolution</td>
-                        <td>Burn <strong>3x Bronze Dragon Whelps</strong></td>
-                        <td>Infinite Supply</td>
-                    </tr>
-                    <tr>
-                        <td><strong>🥇 Gold Dragon Whelp</strong></td>
-                        <td>Tier 3 Evolution</td>
-                        <td>Burn <strong>3x Silver Dragon Whelps</strong></td>
-                        <td>Infinite Supply</td>
-                    </tr>
-                    <tr>
-                        <td><strong>👑 Platinum Dragon Whelp</strong></td>
-                        <td>Apex Evolution</td>
-                        <td>Burn <strong>3x Gold Dragon Whelps</strong></td>
-                        <td><strong>Strictly Capped at 1,000 Max</strong></td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+    <section id="evolution-loop">
+      <h2>2. Evolution & Synthesis Loop</h2>
+      <p>Every tier progression utilizes strict burn mechanics. Lower-tier assets are permanently removed from circulation to mint higher-tier dragons.</p>
 
-        <!-- NeftyBlocks Blending Guide -->
-        <section>
-            <h2>⚙️ NeftyBlocks Blend Recipes</h2>
-            <p>Use the official NeftyBlocks smart contracts to execute your crafting loops:</p>
-            <ul>
-                <li><strong>The Hatchery:</strong> Input <code>4x Mysterious Dragon Essence</code> ➔ Output <code>1x Dragon Egg</code></li>
-                <li><strong>The Awakening:</strong> Input <code>3x Dragon Eggs</code> ➔ Output <code>1x Bronze Dragon Whelp</code></li>
-                <li><strong>Bronze Evolution:</strong> Input <code>3x Bronze Dragon Whelps</code> ➔ Output <code>1x Silver Dragon Whelp</code></li>
-                <li><strong>Silver Evolution:</strong> Input <code>3x Silver Whelps</code> ➔ Output <code>1x Gold Dragon Whelp</code></li>
-                <li><strong>Apex Evolution:</strong> Input <code>3x Gold Whelps</code> ➔ Output <code>1x Platinum Dragon Whelp</code> <em>(Hard-capped at 1,000 total mints)</em></li>
-            </ul>
-        </section>
+      <div class="grid">
+        <div class="card">
+          <h3>1. Primary Acquisition</h3>
+          <p><strong>Mysterious Dragon Essence</strong></p>
+          <p>Price: <code>2.00 WAX</code> (Infinite Supply)</p>
+          <p>Base raw reagent powering the entire economy.</p>
+        </div>
+
+        <div class="card">
+          <h3>2. Egg Incubation</h3>
+          <p><strong>Dragon Egg</strong></p>
+          <p>Recipe: Burn <code>4x</code> Essence</p>
+          <p>Transforms raw essence into a dormant egg.</p>
+        </div>
+
+        <div class="card bronze">
+          <h3>3. Dragon Awakening</h3>
+          <p><strong>Bronze Dragon</strong></p>
+          <p>Recipe: Burn <code>3x</code> Dragon Eggs</p>
+          <p>Hatches your first active metallic dragon.</p>
+        </div>
+
+        <div class="card silver">
+          <h3>4. Silver Evolution</h3>
+          <p><strong>Silver Dragon</strong></p>
+          <p>Recipe: Burn <code>3x</code> Bronze Dragons</p>
+          <p>Combines three bronze dragons into a silver grade dragon.</p>
+        </div>
+
+        <div class="card gold">
+          <h3>5. Gold Evolution</h3>
+          <p><strong>Gold Dragon</strong></p>
+          <p>Recipe: Burn <code>3x</code> Silver Dragons</p>
+          <p>Evolves three silver dragons into a high-tier gold dragon.</p>
+        </div>
+
+        <div class="card platinum">
+          <h3>6. Apex Evolution <span class="multiplier-tag">CAP: 1,000</span></h3>
+          <p><strong>Platinum Dragon</strong></p>
+          <p>Recipe: Burn <code>3x</code> Gold Dragons</p>
+          <p>Peak draconic form. Hard capped at 1,000 total mints worldwide.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="cost-table">
+      <h2>3. Cumulative Essence Requirements</h2>
+      <p>Due to the multiplicative burn requirements, higher-tier dragons possess compounding intrinsic value based on base essence costs:</p>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Target Asset</th>
+            <th>Direct Requirement</th>
+            <th>Total Essence Required</th>
+            <th>Base WAX Floor Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Dragon Egg</strong></td>
+            <td>4x Essence</td>
+            <td>4 Essence</td>
+            <td>8.00 WAX</td>
+          </tr>
+          <tr>
+            <td><strong>Bronze Dragon</strong></td>
+            <td>3x Dragon Eggs</td>
+            <td>12 Essence</td>
+            <td>24.00 WAX</td>
+          </tr>
+          <tr>
+            <td><strong>Silver Dragon</strong></td>
+            <td>3x Bronze Dragons</td>
+            <td>36 Essence</td>
+            <td>72.00 WAX</td>
+          </tr>
+          <tr>
+            <td><strong>Gold Dragon</strong></td>
+            <td>3x Silver Dragons</td>
+            <td>108 Essence</td>
+            <td>216.00 WAX</td>
+          </tr>
+          <tr>
+            <td><strong>Platinum Dragon</strong></td>
+            <td>3x Gold Dragons</td>
+            <td>324 Essence</td>
+            <td>648.00 WAX</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="footer">
+      <p>&copy; 2026 Dragon Prime: Fusion TCG. Powered by WAX Blockchain & AtomicAssets.</p>
     </div>
-
-    <footer>
-        <p>&copy; 2026 Dragon Prime: Fusion TCG. Built on WAX Blockchain.</p>
-    </footer>
+  </div>
 
 </body>
 </html>
