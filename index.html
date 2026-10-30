@@ -57,6 +57,43 @@
       font-weight: bold;
     }
 
+    .btn-group {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background-color: var(--accent);
+      color: #000;
+      padding: 10px 22px;
+      font-weight: bold;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+      border: none;
+    }
+
+    .cta-btn:hover {
+      background-color: #ffa500;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+
+    .cta-btn.secondary {
+      background-color: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--accent);
+    }
+
+    .cta-btn.secondary:hover {
+      background-color: var(--accent);
+      color: #000;
+    }
+
     section {
       margin: 40px 0;
       background: var(--card-bg);
@@ -131,6 +168,11 @@
       <div class="badge">WAX Blockchain Ecosystem</div>
       <h1>Dragon Prime: Fusion TCG</h1>
       <p>Official Player Handbook & Economy Architecture Specification</p>
+
+      <div class="btn-group">
+        <a href="https://wax.atomichub.io/explorer/collection/wax-mainnet/dragonprime1" target="_blank" class="cta-btn">View on AtomicHub ↗</a>
+        <a href="https://wax.mintyblocks.com/mintyblocks/blends" target="_blank" class="cta-btn secondary">Start Blending on MintyBlocks ↗</a>
+      </div>
     </header>
 
     <section id="overview">
@@ -151,8 +193,12 @@
           <td>3.5% (Locked Secondary Fee)</td>
         </tr>
         <tr>
-          <th>Primary Drop Venue</th>
-          <td>MintyBlocks / Nefty Drops</td>
+          <th>Primary Marketplace</th>
+          <td><a href="https://wax.atomichub.io/explorer/collection/wax-mainnet/dragonprime1" target="_blank" style="color: var(--accent); text-decoration: none;">AtomicHub Collection Explorer ↗</a></td>
+        </tr>
+        <tr>
+          <th>Blending Portal</th>
+          <td><a href="https://wax.mintyblocks.com/mintyblocks/blends" target="_blank" style="color: var(--accent); text-decoration: none;">MintyBlocks Blending Page ↗</a></td>
         </tr>
       </table>
     </section>
@@ -204,6 +250,10 @@
           <p>Peak draconic form. Hard capped at 1,000 total mints worldwide.</p>
         </div>
       </div>
+
+      <div style="text-align: center; margin-top: 25px;">
+        <a href="https://wax.mintyblocks.com/mintyblocks/blends" target="_blank" class="cta-btn">Enter MintyBlocks Blending Portal ↗</a>
+      </div>
     </section>
 
     <section id="cost-table">
@@ -241,23 +291,4 @@
           <tr>
             <td><strong>Gold Dragon</strong></td>
             <td>3x Silver Dragons</td>
-            <td>108 Essence</td>
-            <td>216.00 WAX</td>
-          </tr>
-          <tr>
-            <td><strong>Platinum Dragon</strong></td>
-            <td>3x Gold Dragons</td>
-            <td>324 Essence</td>
-            <td>648.00 WAX</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <div class="footer">
-      <p>&copy; 2026 Dragon Prime: Fusion TCG. Powered by WAX Blockchain & AtomicAssets.</p>
-    </div>
-  </div>
-
-</body>
-</html>
+            <td>108 Essence
