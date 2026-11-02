@@ -1,48 +1,61 @@
-# 🐉 Dragon Prime Fusion TCG
-Welcome to Dragon Prime Fusion TCG, a high-octane trading card ecosystem built on the WAX Blockchain. Harness raw magical essence, incubate primal dragon eggs, and forge metallic wyrms into legendary apex lords through on-chain blending powered by Mintyblocks and AtomicHub.
-
-📜 World Lore & Concept: 
-
-The Awakening of the Prime Realm. Long before the rise of mortals, the Prime Realm existed as a boundless expanse of raw cosmic ether. At its core lay the Aetherial Nexus, a mystical energy fountain where celestial magic condensed into concentrated Mysterious Dragon Essences. As centuries passed, cosmic forces began to fluctuate, threatening to destabilize the realm. High alchemists discovered that by harnessing these raw essences through ancient alchemy, they could incubate dormant Dragon Eggs. The Metallic Fusion Ascension. Once hatched, these dragons do not remain mortal beasts—they are elemental catalysts capable of magical fusion. When multiple dragons of equal lineage are combined, their souls merge, ascending into superior metallic forms: 
-
+🐉 Dragon Prime Fusion TCG
+Welcome to Dragon Prime Fusion TCG, an on-chain trading card ecosystem built on the WAX Blockchain. Harness raw magical essence, incubate primal dragon eggs, and forge metallic wyrms into legendary apex lords through smart contract blending powered by Mintyblocks and AtomicHub.
+---
+📜 World Lore & Game Concept
+The Awakening of the Prime Realm
+Long before mortals walked the earth, the Prime Realm existed as a boundless expanse of raw cosmic ether. At its center lay the Aetherial Nexus, a mystical energy fountain where celestial magic condensed into concentrated Mysterious Dragon Essences.
+When cosmic forces threatened to destabilize the realm, ancient alchemists discovered that harnessing these raw essences through high-tier alchemy allowed them to incubate dormant Dragon Eggs.
+The Metallic Fusion Ascension
+Once hatched, these dragons become elemental catalysts capable of magical evolution. By combining multiple dragons of equal lineage, their souls merge and ascend into superior metallic forms:
 Bronze Dragon – Hardened in battle and fortified with elemental earth.
-Silver Dragon – Master of frost and glacial tempest, formed from fused Bronze wyrms.
+Silver Dragon – Master of frost and glacial tempests, formed from fused Bronze wyrms.
 Gold Dragon – A radiant high commander wielding pure solar energy.
 Platinum Dragon – The supreme, capped apex overlord of the Prime Realm. Only 1,000 shall ever exist.
-
-Players step into the shoes of Prime Alchemists, gathering drops and utilizing WAX smart contracts to fuse their collection and conquer the hierarchy.
-
-🖼️ Card Progression Tiers & IPFS Artwork
-TierCard NameIPFS Image Preview Supply CapFusion Recipe Next Evolution StepTier 1Mysterious Dragon Essence Unlimited Base Drop 
-CardCombine 4x Essences $\rightarrow$ 1x Dragon EggTier 2Dragon EggUnlimited4x EssenceCombine 3x Eggs $\rightarrow$ 1x Bronze DragonTier 3Bronze DragonUnlimited3x Dragon EggCombine 3x Bronze $\rightarrow$ 1x Silver DragonTier 4Silver DragonUnlimited3x Bronze DragonCombine 3x Silver $\rightarrow$ 1x Gold DragonTier 5Gold DragonUnlimited3x Silver DragonCombine 3x Gold $\rightarrow$ 1x Platinum DragonTier 6Platinum Dragon1,000 Capped3x Gold Dragon👑 MAXIMUM TIER REACHED🚀 How to Play: Evolution & Blending GuideFollow these step-by-step instructions to start your progression and evolve your cards to the highest tier:Step 1: Obtain Base Cards (Tier 1 Drops)To start your journey, acquire Mysterious Dragon Essence (Tier 1) cards from official drops:🛒 Mintyblocks Drops Portal: Get Drops on Mintyblocks🛒 AtomicHub Drops Portal: Get Drops on AtomicHubStep 2: Evolve Cards via On-Chain BlendingOnce you have collected enough cards, visit the Mintyblocks Blending Portal to perform your evolution recipes:🟢 Tier 1 $\rightarrow$ Tier 2 (Dragon Egg)Where to Go: Mintyblocks BlendsAction: Select the Dragon Egg Blend Recipe.Requirement: Select 4x Mysterious Dragon Essence cards from your inventory and execute the blend.Result: Your 4 Essences are burned, and 1x Dragon Egg is minted to your wallet.🔵 Tier 2 $\rightarrow$ Tier 3 (Bronze Dragon)Where to Go: Mintyblocks BlendsAction: Select the Bronze Dragon Blend Recipe.Requirement: Select 3x Dragon Eggs from your inventory.Result: Your 3 Eggs are burned, and 1x Bronze Dragon is minted to your wallet.⚪ Tier 3 $\rightarrow$ Tier 4 (Silver Dragon)Where to Go: Mintyblocks BlendsAction: Select the Silver Dragon Blend Recipe.Requirement: Select 3x Bronze Dragons from your inventory.Result: Your 3 Bronze Dragons are burned, and 1x Silver Dragon is minted to your wallet.🟡 Tier 4 $\rightarrow$ Tier 5 (Gold Dragon)Where to Go: Mintyblocks BlendsAction: Select the Gold Dragon Blend Recipe.Requirement: Select 3x Silver Dragons from your inventory.Result: Your 3 Silver Dragons are burned, and 1x Gold Dragon is minted to your wallet.👑 Tier 5 $\rightarrow$ Tier 6 (Platinum Dragon)Where to Go: Mintyblocks BlendsAction: Select the Platinum Dragon Blend Recipe.Requirement: Select 3x Gold Dragons from your inventory.Result: Your 3 Gold Dragons are burned, and 1x Platinum Dragon (Capped at 1,000) is minted to your wallet!🔗 Official Links SummaryMintyblocks Drops: https://wax.mintyblocks.com/mintyblocks/dropsAtomicHub Drops: https://wax.atomichub.io/drops (dragonprime1)Mintyblocks Blends: https://wax.mintyblocks.com/mintyblocks/blends🛠️ Local Development SetupTo run the landing page locally:Clone this repository:git clone https://github.com/your-username/dragon-prime-fusion-tcg.git
-Open index.html in any web browser or use VS Code Live Server.Powered by WAX Blockchain, Mintyblocks & AtomicHub.me: Fusion TCG
-
-Official repository and economy specification for **Dragon Prime: Fusion TCG** on the WAX blockchain.
-
-## Ecosystem Overview
-
-* **Collection Name:** dragonprime1
-* **Schema Name:** dragoneggs
-* **Secondary Market Royalty:** 3.5%
-* **Primary Drop Platform:** MintyBlocks / Nefty Drops
-* **Base Item Price:** 2.00 WAX (Mysterious Dragon Essence)
-
-## Card Progression & Crafting Rules
-
-1. **Mysterious Dragon Essence** (Primary Drop at 2.00 WAX)
-2. **Dragon Egg**: Burn 4x Mysterious Dragon Essence
-3. **Bronze Dragon**: Burn 3x Dragon Eggs
-4. **Silver Dragon**: Burn 3x Bronze Dragons
-5. **Gold Dragon**: Burn 3x Silver Dragons
-6. **Platinum Dragon**: Burn 3x Gold Dragons *(Strict Cap: 1,000 Total Mints)*
-
-## Schema Attributes
-
-* `name` (String)
-* `img` (String / IPFS)
-* `category` (String)
-* `tier` (String)
-* `description` (String)
-
+Players assume the role of Prime Alchemists, collecting base card drops and fusing their inventory to conquer the hierarchy.
 ---
-© 2026 Dragon Prime: Fusion TCG
+🖼️ Progression Tiers & Card Artwork
+<div align="center">
+Tier	Card Name	Image Preview	Supply Cap	Fusion Recipe
+Tier 1	Mysterious Dragon Essence	<img src="https://silver-regulatory-giraffe-176.mypinata.cloud/ipfs/bafybeigccws2heuhfs4qrxms34gbh4ppeydnwqlv4kwhl64gpojqzkhnb4" width="100" alt="Essence" />	Unlimited	Base Drop Card
+Tier 2	Dragon Egg	<img src="https://silver-regulatory-giraffe-176.mypinata.cloud/ipfs/bafybeibkuudjpgo6gzqd4e3spgqk23gw2oqx5iwjrafxr5ivhrxhx4g3sm" width="100" alt="Egg" />	Unlimited	4x Essence
+Tier 3	Bronze Dragon	<img src="https://silver-regulatory-giraffe-176.mypinata.cloud/ipfs/bafybeiaqctxtpewm4oqakwdpykewxctx3h4kvd5ptfmqhlope72pdyh4za" width="100" alt="Bronze Dragon" />	Unlimited	3x Dragon Egg
+Tier 4	Silver Dragon	<img src="https://silver-regulatory-giraffe-176.mypinata.cloud/ipfs/bafybeica5ukq2rsmfie6imiclpepctsp6fxjsjvddefrmowjlv5eeiombu" width="100" alt="Silver Dragon" />	Unlimited	3x Bronze Dragon
+Tier 5	Gold Dragon	<img src="https://silver-regulatory-giraffe-176.mypinata.cloud/ipfs/bafybeihzog6s3ri3l5hwc54otecwzgaaseatd2l6td25u4pauv3tsmt4zy" width="100" alt="Gold Dragon" />	Unlimited	3x Silver Dragon
+Tier 6	Platinum Dragon	<img src="https://silver-regulatory-giraffe-176.mypinata.cloud/ipfs/bafybeidekqo7bosdjqhqjkulbmp2rpqbsgyacr7penpi77a4s65yr6wpma" width="100" alt="Platinum Dragon" />	1,000 Capped	3x Gold Dragon
+</div>
+---
+🚀 How to Play: Step-by-Step Guide
+Step 1: Acquire Base Cards (Tier 1 Drops)
+To begin, collect Mysterious Dragon Essence (Tier 1) cards from official drops:
+🔥 Mintyblocks Drops: wax.mintyblocks.com/mintyblocks/drops
+⚛️ AtomicHub Drops: wax.atomichub.io/drops (dragonprime1)
+---
+Step 2: Evolve Your Cards via On-Chain Blending
+Visit the Mintyblocks Blends Portal to burn required ingredients and mint higher-tier cards:
+🟢 Tier 1 -> Tier 2: Hatch a Dragon Egg
+Portal: Mintyblocks Blends
+Recipe: Select 4x Mysterious Dragon Essence cards.
+Result: Burns 4 Essences and mints 1x Dragon Egg.
+🔵 Tier 2 -> Tier 3: Hatch a Bronze Dragon
+Portal: Mintyblocks Blends
+Recipe: Select 3x Dragon Eggs.
+Result: Burns 3 Eggs and mints 1x Bronze Dragon.
+⚪ Tier 3 -> Tier 4: Forge a Silver Dragon
+Portal: Mintyblocks Blends
+Recipe: Select 3x Bronze Dragons.
+Result: Burns 3 Bronze Dragons and mints 1x Silver Dragon.
+🟡 Tier 4 -> Tier 5: Elevate to a Gold Dragon
+Portal: Mintyblocks Blends
+Recipe: Select 3x Silver Dragons.
+Result: Burns 3 Silver Dragons and mints 1x Gold Dragon.
+👑 Tier 5 -> Tier 6: Ascend to the Apex Platinum Dragon
+Portal: Mintyblocks Blends
+Recipe: Select 3x Gold Dragons.
+Result: Burns 3 Gold Dragons and mints 1x Platinum Dragon (Capped at 1,000).
+---
+🔗 Quick Link Directory
+Mintyblocks Drops: `https://wax.mintyblocks.com/mintyblocks/drops`
+AtomicHub Drops: `https://wax.atomichub.io/drops?collection_name=dragonprime1&price_type=paid&primary_chain=wax-mainnet`
+Mintyblocks Blends: `https://wax.mintyblocks.com/mintyblocks/blends`
+---
+Powered by the WAX Blockchain, Mintyblocks & AtomicHub.
